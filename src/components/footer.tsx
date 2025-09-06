@@ -109,7 +109,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom bar */}
-      <div className="w-full border-t border-gray-200 mt-8 py-4 flex flex-col md:flex-row items-center justify-between px-4 text-sm text-gray-600">
+      <div className="w-full border-t border-gray-200 mt-8 mb-0 py-4 flex flex-col md:flex-row items-center justify-between px-4 text-sm text-gray-600">
         <div className="mb-2 md:mb-0 text-center md:text-left">
           © {new Date().getFullYear()} Hollali — All rights reserved.
         </div>
