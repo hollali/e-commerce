@@ -18,7 +18,8 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@sanity/*": ["./sanity/sanity-config/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "src/**/*.tsx", "**/*.tsx", ".next/types/**/*.ts"],

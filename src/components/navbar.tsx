@@ -64,7 +64,7 @@ export default function Navbar() {
         )}
         <Link href="/">
           <h1 className="text-2xl md:text-4xl font-bold">
-            Nadia's<span className="text-black">Beads</span>
+            Nadia&apos;s<span className="text-black">Beads</span>
           </h1>
         </Link>
         <nav className="hidden gap-12 lg:flex">
