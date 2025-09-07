@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
@@ -33,45 +32,56 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer className="mt-16 mb-0">
+    <footer className="mt-10 sm:mt-16 mb-0 bg-white">
       <div className="container mx-auto px-4">
         {/* Brand */}
-        <div className="mt-5">
+        <div className="mt-3 sm:mt-5">
           <Link href="/" className="font-black text-tertiary-light text-2xl">
             Nadia&apos;s<span className="text-black">Beads</span>
           </Link>
         </div>
 
         {/* Contact & Info */}
-        <div className="flex flex-wrap gap-16 items-start justify-between mt-6">
+        <div className="flex flex-col sm:flex-row gap-8 sm:gap-16 items-start justify-between mt-6">
           {/* Contact */}
           <div className="flex-1">
-            <h4 className="font-semibold text-[20px] py-3">Contact</h4>
-            <div className="flex items-center mb-4">
-              <EmailIcon />
-              <a href="mailto:doreendaabbey@gmail.com" className="ml-2">
+            <h4 className="font-semibold text-[18px] sm:text-[20px] py-2 sm:py-3">
+              Contact
+            </h4>
+            <div className="flex items-center mb-3 sm:mb-4">
+              <EmailIcon fontSize="small" />
+              <a
+                href="mailto:doreendaabbey@gmail.com"
+                className="ml-2 text-sm sm:text-base"
+              >
                 doreendaabbey@gmail.com
               </a>
             </div>
-            <div className="flex items-center mb-4">
-              <PhoneIcon />
-              <a href="tel:+2330203900892" className="ml-2">
+            <div className="flex items-center mb-3 sm:mb-4">
+              <PhoneIcon fontSize="small" />
+              <a
+                href="tel:+2330203900892"
+                className="ml-2 text-sm sm:text-base"
+              >
                 0203900892
               </a>
             </div>
-            <div className="flex items-center mb-4">
-              <WhatsAppIcon />
-              <a href="https://wa.me/2330203900892" className="ml-2">
+            <div className="flex items-center mb-3 sm:mb-4">
+              <WhatsAppIcon fontSize="small" />
+              <a
+                href="https://wa.me/2330203900892"
+                className="ml-2 text-sm sm:text-base"
+              >
                 0203900892
               </a>
             </div>
             <div className="flex items-center">
-              <InstagramIcon />
+              <InstagramIcon fontSize="small" />
               <a
                 href="https://www.instagram.com/africvouge"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="ml-2"
+                className="ml-2 text-sm sm:text-base"
               >
                 Nadia
               </a>
@@ -79,9 +89,11 @@ const Footer = () => {
           </div>
 
           {/* Info */}
-          <div className="flex-1 md:text-right">
-            <h4 className="font-semibold text-[20px] py-3">Information</h4>
-            <ul className="space-y-2 text-gray-600">
+          <div className="flex-1 sm:text-right mt-6 sm:mt-0">
+            <h4 className="font-semibold text-[18px] sm:text-[20px] py-2 sm:py-3">
+              Information
+            </h4>
+            <ul className="space-y-2 text-gray-600 text-sm sm:text-base">
               <li>
                 <Link href="/blog" className="hover:text-blue-400 transition">
                   Blog Post (Coming Soon)
@@ -109,11 +121,13 @@ const Footer = () => {
       </div>
 
       {/* Bottom bar */}
-      <div className="w-full border-t border-gray-200 mt-8 mb-0 py-4 flex flex-col md:flex-row items-center justify-between px-4 text-sm text-gray-600">
+      <div className="w-full border-t border-gray-200 mt-6 sm:mt-8 py-3 sm:py-4 flex flex-col md:flex-row items-center justify-between px-4 text-xs sm:text-sm text-gray-600">
         <div className="mb-2 md:mb-0 text-center md:text-left">
           © {new Date().getFullYear()} Hollali — All rights reserved.
         </div>
-        <div className="mb-2 md:mb-0 text-black font-medium">{dateTime}</div>
+        <div className="mb-2 md:mb-0 text-black font-medium text-center">
+          {dateTime}
+        </div>
         <div className="text-center md:text-right">
           <a
             href="https://hollali.pxxl.space/"
