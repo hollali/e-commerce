@@ -98,7 +98,7 @@ export default function Navbar() {
           >
             <ShoppingBagIcon />
             {cartCount > 0 && (
-              <span className="absolute top-0 right-0 inline-flex items-center justify-center h-6 w-6 rounded-full bg-primary text-white text-xs">
+              <span className="absolute top-0 right-0 inline-flex items-center justify-center h-6 w-6 rounded-full bg-red text-white text-xs">
                 {cartCount}
               </span>
             )}
