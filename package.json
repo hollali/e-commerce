@@ -36,7 +36,7 @@
     "clsx": "^2.1.0",
     "daisyui": "^4.7.3",
     "eslint-config-prettier": "^9.1.0",
-    "firebase": "^10.12.2",
+    "firebase": "^12.2.1",
     "groq": "^3.42.1",
     "lucide-react": "^0.365.0",
     "mongodb": "^6.5.0",

@@ -1,65 +1,142 @@
 "use client";
-// pages/sign-up.tsx
-import { useState } from "react";
-import { signIn } from "next-auth/react";
-import GoogleIcon from "@mui/icons-material/Google";
-import FacebookIcon from "@mui/icons-material/Facebook";
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import {
+  signInWithPopup,
+  onAuthStateChanged,
+  User,
+  signOut,
+} from "firebase/auth";
+import { auth, googleProvider } from "@/lib/firebaseConfig";
 
 export default function SignUp() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [signInLoading, setSignInLoading] = useState(false);
+  const [error, setError] = useState<string>("");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  // Watch auth state
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false);
+    });
+    return () => unsubscribe();
+  }, []);
+
+  const handleGoogleSignIn = async () => {
+    setSignInLoading(true);
+    setError("");
+
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      console.log("User signed in:", result.user);
+    } catch (error: any) {
+      console.error("Google sign-in error:", error);
+
+      // Handle specific error cases
+      if (error.code === "auth/popup-closed-by-user") {
+        setError("Sign-in was cancelled. Please try again.");
+      } else if (error.code === "auth/popup-blocked") {
+        setError("Popup was blocked. Please allow popups for this site.");
+      } else {
+        setError("Failed to sign in. Please try again.");
+      }
+    } finally {
+      setSignInLoading(false);
+    }
   };
 
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+      console.log("User signed out");
+    } catch (error) {
+      console.error("Sign-out error:", error);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+      </div>
+    );
+  }
+
   return (
-    <div className="flex justify-center px-2 mt-10 mb-10"> {/* Changed from items-center to justify-start and added mt-4 */}
-      <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-lg text-center">
-        <h1 className="text-2xl md:text-4xl font-bold mb-6">Sign Up</h1>
-        <div className="flex justify-center gap-4 mb-4">
-          <button
-            className="flex items-center px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-            onClick={() => signIn("google")}
-          >
-            <GoogleIcon className="mr-2" />
-            Google
-          </button>
-          <button
-            className="flex items-center px-4 py-2 bg-blue-700 text-white rounded hover:bg-blue-800"
-            onClick={() => signIn("facebook")}
-          >
-            <FacebookIcon className="mr-2" />
-            Facebook
-          </button>
+    <div className="flex justify-center items-center min-h-screen px-4 bg-gray-50">
+      <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-2xl text-center">
+        {/* Hero Image */}
+        <div className="mb-6">
+          <Image
+            src="/model.jpeg"
+            alt="Sign Up Illustration"
+            width={300}
+            height={200}
+            className="mx-auto rounded-lg"
+            priority
+          />
         </div>
-        <div className="mb-4">or</div>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            type="email"
-            id="email"
-            placeholder="Email Address"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <input
-            type="password"
-            id="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <button
-            type="submit"
-            className="w-full py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-          >
-            Sign Up
-          </button>
-        </form>
+
+        {/* Error Message */}
+        {error && (
+          <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg">
+            {error}
+          </div>
+        )}
+
+        {/* Show Google button if not signed in */}
+        {!user ? (
+          <>
+            <h2 className="text-2xl font-bold mb-6 text-gray-800">Welcome!</h2>
+            <button
+              onClick={handleGoogleSignIn}
+              disabled={signInLoading}
+              className="w-full flex items-center justify-center px-4 py-3 rounded-lg border border-gray-300 hover:bg-gray-100 transition disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {signInLoading ? (
+                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-gray-600 mr-2"></div>
+              ) : (
+                <Image
+                  src="/google.png"
+                  alt="Google Sign In"
+                  width={24}
+                  height={24}
+                  className="mr-2"
+                />
+              )}
+              <span className="text-gray-700 font-medium">
+                {signInLoading ? "Signing in..." : "Continue with Google"}
+              </span>
+            </button>
+          </>
+        ) : (
+          <div className="space-y-4">
+            <h2 className="text-2xl font-bold text-gray-800">Welcome back!</h2>
+            <div className="flex flex-col items-center space-y-4">
+              <Image
+                src={user.photoURL || "/model.jpeg"}
+                alt="User avatar"
+                width={80}
+                height={80}
+                className="rounded-full border-4 border-blue-500"
+              />
+              <div>
+                <p className="text-lg font-semibold text-gray-800">
+                  {user.displayName}
+                </p>
+                <p className="text-sm text-gray-600">{user.email}</p>
+              </div>
+              <button
+                onClick={handleSignOut}
+                className="px-6 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
+              >
+                Sign Out
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
