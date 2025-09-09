@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['cdn.sanity.io'],
+        domains: ["cdn.sanity.io", "lh3.googleusercontent.com"],
     },
     webpack: (config, { isServer }) => {
         if (!isServer) {
@@ -13,10 +13,9 @@ const nextConfig = {
         }
         return config;
     },
-    // Also try this experimental flag if the above doesn't work
     experimental: {
-        esmExternals: 'loose'
-    }
+        esmExternals: "loose",
+    },
 };
 
 export default nextConfig;
