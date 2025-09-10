@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import {
@@ -30,18 +31,11 @@ export default function SignUp() {
 
     try {
       const result = await signInWithPopup(auth, googleProvider);
-      console.log("User signed in:", result.user);
+      console.log("✅ User signed in:", result.user);
+      console.log("🔍 Provider Data:", result.user.providerData);
     } catch (error: any) {
-      console.error("Google sign-in error:", error);
-
-      // Handle specific error cases
-      if (error.code === "auth/popup-closed-by-user") {
-        setError("Sign-in was cancelled. Please try again.");
-      } else if (error.code === "auth/popup-blocked") {
-        setError("Popup was blocked. Please allow popups for this site.");
-      } else {
-        setError("Failed to sign in. Please try again.");
-      }
+      console.error("❌ Google sign-in error:", error);
+      setError("Failed to sign in. Please try again.");
     } finally {
       setSignInLoading(false);
     }
@@ -50,9 +44,9 @@ export default function SignUp() {
   const handleSignOut = async () => {
     try {
       await signOut(auth);
-      console.log("User signed out");
+      console.log("✅ User signed out");
     } catch (error) {
-      console.error("Sign-out error:", error);
+      console.error("❌ Sign-out error:", error);
     }
   };
 
@@ -122,11 +116,19 @@ export default function SignUp() {
                 height={80}
                 className="rounded-full border-4 border-white shadow-lg"
               />
-              <div>
-                <p className="text-lg font-semibold text-gray-800">
-                  {user.displayName}
+              <div className="text-left space-y-1">
+                <p>
+                  <strong>Name:</strong> {user.displayName}
                 </p>
-                <p className="text-sm text-gray-600">{user.email}</p>
+                <p>
+                  <strong>Email:</strong> {user.email}
+                </p>
+                <p>
+                  <strong>Phone:</strong> {user.phoneNumber || "Not provided"}
+                </p>
+                {/*<p>
+                  <strong>UID:</strong> {user.uid}
+                </p>*/}
               </div>
               <button
                 onClick={handleSignOut}
