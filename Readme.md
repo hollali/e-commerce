@@ -36,14 +36,30 @@ A full-stack e-commerce solution built with modern web technologies, featuring s
 
 ## 🚀 Tech Stack
 
-| Category           | Technology                       |
-| ------------------ | -------------------------------- |
-| **Frontend**       | Next.js 14, React 18, TypeScript |
-| **Styling**        | Tailwind CSS, shadcn/ui          |
-| **Authentication** | Firebase Auth                    |
-| **Database**       | Firebase Firestore               |
-| **Payments**       | Stripe, Paystack                 |
-| **Deployment**     | Netlify/Vercel                   |
+### Frontend & Framework
+
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+
+### Styling & UI
+
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-000000?style=for-the-badge&logo=shadcnui&logoColor=white)
+
+### Backend & Authentication
+
+![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
+
+### Payments
+
+![Stripe](https://img.shields.io/badge/Stripe-626CD9?style=for-the-badge&logo=Stripe&logoColor=white)
+![Paystack](https://img.shields.io/badge/Paystack-011C2A?style=for-the-badge&logo=paystack&logoColor=white)
+
+### Deployment & Hosting
+
+![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
 ## 📦 Installation
 
