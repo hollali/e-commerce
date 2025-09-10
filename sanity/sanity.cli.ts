@@ -5,7 +5,6 @@ export default defineCliConfig({
     projectId: 'jbtkn2lg',
     dataset: 'production'
   },
-  studioHost: 'e-commerce-nadia',
 
   /**
    * Enable auto-updates for studios.
