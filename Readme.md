@@ -1,6 +1,6 @@
 # 🛍️ Modern E-commerce Platform
 
-A full-stack e-commerce solution built with modern web technologies, featuring secure authentication, multiple payment gateways, and a beautiful, responsive design.
+A full-stack e-commerce solution built with modern web technologies, featuring secure authentication, multiple payment gateways, headless CMS, and a beautiful, responsive design.
 
 <!--![Project Banner](https://via.placeholder.com/800x400/4F46E5/ffffff?text=E-commerce+Platform)-->
 
@@ -27,6 +27,13 @@ A full-stack e-commerce solution built with modern web technologies, featuring s
 - Secure checkout process
 - Order tracking and management
 
+### 📝 Content Management
+
+- **Sanity CMS** for product management and content
+- Real-time content updates
+- Rich media handling
+- Structured content with custom schemas
+
 ### 🎨 Modern UI/UX
 
 - Beautiful, accessible components with **shadcn/ui**
@@ -51,6 +58,10 @@ A full-stack e-commerce solution built with modern web technologies, featuring s
 
 ![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
 
+### Content Management
+
+![Sanity](https://img.shields.io/badge/Sanity-F03E2F?style=for-the-badge&logo=sanity&logoColor=white)
+
 ### Payments
 
 ![Stripe](https://img.shields.io/badge/Stripe-626CD9?style=for-the-badge&logo=Stripe&logoColor=white)
@@ -70,6 +81,7 @@ A full-stack e-commerce solution built with modern web technologies, featuring s
 - Firebase account
 - Stripe account
 - Paystack account
+- Sanity account
 
 ### Setup
 
@@ -100,6 +112,13 @@ A full-stack e-commerce solution built with modern web technologies, featuring s
    NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
    NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
 
+   # Sanity Configuration
+   NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id
+   NEXT_PUBLIC_SANITY_DATASET=production
+   NEXT_PUBLIC_SANITY_API_VERSION=2024-01-01
+   SANITY_API_READ_TOKEN=your_read_token
+   SANITY_API_WRITE_TOKEN=your_write_token
+
    # Stripe Configuration
    NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
    STRIPE_SECRET_KEY=sk_test_...
@@ -113,7 +132,19 @@ A full-stack e-commerce solution built with modern web technologies, featuring s
    NEXTAUTH_SECRET=your_nextauth_secret
    ```
 
-4. **Run the development server**
+4. **Setup Sanity Studio**
+
+   ```bash
+   # Initialize Sanity in your project
+   cd sanity
+   npm install
+   npx sanity init
+
+   # Start Sanity Studio
+   npm run dev
+   ```
+
+5. **Run the development server**
 
    ```bash
    npm run dev
@@ -138,8 +169,13 @@ A full-stack e-commerce solution built with modern web technologies, featuring s
 │   └── layout/           # Layout components
 ├── lib/                  # Utility functions
 │   ├── firebase.ts       # Firebase configuration
+│   ├── sanity.ts         # Sanity configuration
 │   ├── stripe.ts         # Stripe configuration
 │   └── utils.ts          # Utility functions
+├── sanity/               # Sanity CMS
+│   ├── schemas/          # Content schemas
+│   ├── lib/              # Sanity utilities
+│   └── sanity.config.ts  # Sanity configuration
 ├── hooks/                # Custom React hooks
 ├── types/                # TypeScript type definitions
 └── public/              # Static assets
@@ -153,6 +189,13 @@ A full-stack e-commerce solution built with modern web technologies, featuring s
 2. Enable Authentication with Google and Email providers
 3. Create a Firestore database
 4. Add your domain to authorized domains in Authentication settings
+
+### Sanity Setup
+
+1. Create a Sanity project at [Sanity Management](https://www.sanity.io/manage)
+2. Configure your content schemas for products, categories, and other content
+3. Set up API tokens for read/write access
+4. Deploy your Sanity Studio for content management
 
 ### Stripe Setup
 
@@ -185,6 +228,13 @@ npm i -g vercel
 vercel --prod
 ```
 
+### Deploy Sanity Studio
+
+```bash
+cd sanity
+npx sanity deploy
+```
+
 ## 📱 Features Overview
 
 ### User Authentication
@@ -210,10 +260,17 @@ vercel --prod
 - [x] Order Management
 - [x] Payment History
 
+### Content Management
+
+- [x] Sanity CMS Integration
+- [x] Product Content Management
+- [x] Real-time Content Updates
+- [x] Media Asset Management
+
 ### Admin Features
 
-- [ ] Product Management
-- [ ] Order Management
+- [x] Sanity Studio for Content Management
+- [ ] Order Management Dashboard
 - [ ] User Management
 - [ ] Analytics Dashboard
 
@@ -241,6 +298,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Tailwind CSS](https://tailwindcss.com/) for utility-first CSS
 - [shadcn/ui](https://ui.shadcn.com/) for beautiful components
 - [Firebase](https://firebase.google.com/) for authentication and database
+- [Sanity](https://www.sanity.io/) for headless CMS and content management
 - [Stripe](https://stripe.com/) for payment processing
 - [Paystack](https://paystack.com/) for African payment solutions
 
