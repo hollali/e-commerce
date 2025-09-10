@@ -2,7 +2,7 @@
 
 A full-stack e-commerce solution built with modern web technologies, featuring secure authentication, multiple payment gateways, and a beautiful, responsive design.
 
-![Project Banner](https://via.placeholder.com/800x400/4F46E5/ffffff?text=E-commerce+Platform)
+<!--![Project Banner](https://via.placeholder.com/800x400/4F46E5/ffffff?text=E-commerce+Platform)-->
 
 ## ✨ Features
 
