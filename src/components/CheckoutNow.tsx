@@ -7,6 +7,7 @@ import { PaystackButton } from "react-paystack";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../lib/firebaseConfig";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function CheckoutNow({
   currency,
@@ -69,12 +70,14 @@ export default function CheckoutNow({
 
   if (!userEmail) {
     return (
-      <button
-        disabled
-        className="bg-gray-300 px-4 py-2 rounded-md cursor-not-allowed"
-      >
-        Please login to checkout
-      </button>
+      <div className="inline-block">
+        <Link
+          href="/sign-up"
+          className="bg-gray-300 px-4 py-2 rounded-md text-gray-700 hover:bg-gray-400 transition-colors cursor-pointer inline-block text-center no-underline"
+        >
+          Please login to checkout
+        </Link>
+      </div>
     );
   }
 

@@ -11,6 +11,8 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function ShoppingCartModal() {
   const {
@@ -27,6 +29,7 @@ export default function ShoppingCartModal() {
 
   const [user, loading] = useAuthState(auth); // ✅ Firebase user
   const cedisSign = "\u20B5";
+  const router = useRouter();
 
   // Use Firebase email if logged in
   const userEmail = user?.email || "";
@@ -75,16 +78,11 @@ export default function ShoppingCartModal() {
           </SheetHeader>
           <div className="h-full flex flex-col items-center justify-center">
             <p className="text-gray-600 mb-4">Please login to checkout</p>
-            <button
-              onClick={() => {
-                // You can trigger your Firebase login flow here
-                // e.g. with GoogleAuthProvider
-                console.log("Redirect to login page");
-              }}
-              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-            >
-              Login
-            </button>
+            <Link href="/sign-up">
+              <button className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">
+                Login
+              </button>
+            </Link>
           </div>
         </SheetContent>
       </Sheet>
