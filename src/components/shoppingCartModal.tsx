@@ -3,7 +3,8 @@
 import { useShoppingCart } from "use-shopping-cart";
 import { PaystackButton } from "react-paystack";
 import Image from "next/image";
-import { signIn } from "next-auth/react";
+import { useAuthState } from "react-firebase-hooks/auth"; // ✅ Firebase auth hook
+import { auth } from "../lib/firebaseConfig"; // ✅ your Firebase config
 import {
   Sheet,
   SheetContent,
@@ -21,15 +22,22 @@ export default function ShoppingCartModal() {
     incrementItem,
     decrementItem,
     totalPrice = 0,
+    checkoutSingleItem,
   } = useShoppingCart();
+
+  const [user, loading] = useAuthState(auth); // ✅ Firebase user
   const cedisSign = "\u20B5";
 
+  // Use Firebase email if logged in
+  const userEmail = user?.email || "";
+
+  // Paystack config
   const paystackConfig = {
     reference: new Date().getTime().toString(),
-    email: "customer@gmail.com", // Replace with the customer's email
-    amount: totalPrice * 100, // Paystack works with kobo, so multiply by 100 to convert to kobo
+    email: userEmail,
+    amount: totalPrice * 100,
     currency: "GHS",
-    publicKey: "pk_live_28d0821e0513a70cdf1bd69001dac6f723d93d40", // Replace with your Paystack public key
+    publicKey: process.env.NEXT_PUBLIC_PAYSTACK_KEY || "",
     metadata: {
       custom_fields: [
         {
@@ -42,18 +50,46 @@ export default function ShoppingCartModal() {
   };
 
   const handlePaystackSuccess = (reference: any) => {
-    // Handle successful payment here
-    console.log("Payment Success:", reference);
+    console.log("✅ Payment Success:", reference);
+    // TODO: Save order to DB
   };
 
   const handlePaystackClose = () => {
-    // Handle payment closure here
-    console.log("Payment closed");
+    console.log("❌ Payment closed");
   };
 
-  const handlePaystackClick = () => {
-    console.log("Paystack button clicked");
-  };
+  // Show loading while checking Firebase auth
+  if (loading) {
+    return null;
+  }
+
+  // If not logged in → prompt login
+  if (!userEmail) {
+    return (
+      <Sheet open={shouldDisplayCart} onOpenChange={() => handleCartClick()}>
+        <SheetContent className="sm:max-w-lg w-[90vw]">
+          <SheetHeader>
+            <SheetTitle className="flex items-center justify-center h-full text-3xl text-black border-b pb-2 border-gray-200 font-bold">
+              CART
+            </SheetTitle>
+          </SheetHeader>
+          <div className="h-full flex flex-col items-center justify-center">
+            <p className="text-gray-600 mb-4">Please login to checkout</p>
+            <button
+              onClick={() => {
+                // You can trigger your Firebase login flow here
+                // e.g. with GoogleAuthProvider
+                console.log("Redirect to login page");
+              }}
+              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+            >
+              Login
+            </button>
+          </div>
+        </SheetContent>
+      </Sheet>
+    );
+  }
 
   return (
     <Sheet open={shouldDisplayCart} onOpenChange={() => handleCartClick()}>
@@ -64,6 +100,7 @@ export default function ShoppingCartModal() {
           </SheetTitle>
         </SheetHeader>
         <div className="h-full flex flex-col justify-between">
+          {/* Cart Items */}
           <div className="mt-8 flex-1 overflow-y-auto">
             <ul className="-my-6 divide-y divide-gray-200">
               {cartCount === 0 ? (
@@ -133,6 +170,8 @@ export default function ShoppingCartModal() {
               )}
             </ul>
           </div>
+
+          {/* Checkout Section */}
           <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
             <div className="flex justify-between text-base font-medium text-gray-900">
               <p>Subtotal:</p>
@@ -144,17 +183,31 @@ export default function ShoppingCartModal() {
             <p className="mt-0.5 text-sm text-gray-500">
               Delivery fee is not added at checkout
             </p>
-            <div className="mt-6">
-              <div onClick={handlePaystackClick}>
-                <PaystackButton
-                  {...paystackConfig}
-                  text="Checkout"
-                  className="w-full bg-blue-600 text-white py-2 px-4 rounded"
-                  onSuccess={handlePaystackSuccess}
-                  onClose={handlePaystackClose}
-                />
-              </div>
+
+            <div className="mt-6 space-y-3">
+              {/* Paystack */}
+              <PaystackButton
+                {...paystackConfig}
+                text="Checkout"
+                className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700"
+                onSuccess={handlePaystackSuccess}
+                onClose={handlePaystackClose}
+              />
+
+              {/* Stripe (future use) */}
+              {/*<button
+                onClick={() => {
+                  const firstItem = Object.values(cartDetails ?? {})[0];
+                  if (firstItem?.price_id) {
+                    checkoutSingleItem(firstItem.price_id);
+                  }
+                }}
+                className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700"
+              >
+                Pay with Stripe
+              </button>*/}
             </div>
+
             <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
               <p>
                 OR{" "}

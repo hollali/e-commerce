@@ -4,6 +4,9 @@ import { useShoppingCart } from "use-shopping-cart";
 import { urlFor } from "../lib/sanity";
 import { ProductCart } from "./AddToBag";
 import { PaystackButton } from "react-paystack";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../lib/firebaseConfig";
+import { useEffect, useState } from "react";
 
 export default function CheckoutNow({
   currency,
@@ -14,51 +17,85 @@ export default function CheckoutNow({
   price_id,
 }: ProductCart) {
   const { checkoutSingleItem } = useShoppingCart();
+  const [user, loading] = useAuthState(auth);
+  const [userEmail, setUserEmail] = useState<string>("");
 
+  useEffect(() => {
+    if (user?.email) setUserEmail(user.email);
+  }, [user]);
+
+  // Stripe "Buy Now"
   function buyNow(priceId: string) {
     checkoutSingleItem(priceId);
   }
 
   const product = {
-    name: name,
-    description: description,
-    price: price,
-    currency: currency,
+    name,
+    description,
+    price,
+    currency,
     image: urlFor(image).url(),
-    price_id: price_id,
+    price_id,
   };
 
-  // Paystack configuration
+  // Paystack config
   const config = {
     reference: new Date().getTime().toString(),
-    email: "user@gmail.com", // Replace with user's email
-    amount: product.price * 100, // Paystack works with amounts in cedis
+    email: userEmail,
+    amount: product.price * 100, // Paystack expects lowest unit (pesewas)
     currency: "GHS",
-    publicKey: "pk_live_28d0821e0513a70cdf1bd69001dac6f723d93d40", // Replace with your Paystack public key
+    publicKey: process.env.NEXT_PUBLIC_PAYSTACK_KEY || "",
   };
 
   const handlePaystackSuccessAction = (reference: any) => {
-    // Implement what happens when the payment is successful
-    console.log(reference);
+    console.log("✅ Paystack Payment successful:", reference);
+    // TODO: Save order to DB, then redirect
   };
 
   const handlePaystackCloseAction = () => {
-    // Implement what happens when the payment is closed
-    console.log("Payment closed");
+    console.log("❌ Payment closed");
   };
 
-  const componentProps = {
-    ...config,
-    text: "Checkout",
-    onSuccess: (reference: any) => handlePaystackSuccessAction(reference),
-    onClose: handlePaystackCloseAction,
-  };
+  if (loading) {
+    return (
+      <button
+        disabled
+        className="bg-gray-300 px-4 py-2 rounded-md cursor-not-allowed"
+      >
+        Loading...
+      </button>
+    );
+  }
+
+  if (!userEmail) {
+    return (
+      <button
+        disabled
+        className="bg-gray-300 px-4 py-2 rounded-md cursor-not-allowed"
+      >
+        Please login to checkout
+      </button>
+    );
+  }
 
   return (
-    <div className="inline-block">
-      <PaystackButton 
-      {...componentProps} 
-      className="bg-gray-200 px-4 py-2 rounded-md hover:bg-gray-500"/>
+    <div className="flex gap-2">
+      {/* Paystack Checkout */}
+      <PaystackButton
+        {...config}
+        text="Checkout"
+        onSuccess={handlePaystackSuccessAction}
+        onClose={handlePaystackCloseAction}
+        className="bg-gray-200 px-4 py-2 rounded-md hover:bg-gray-500"
+      />
+
+      {/* Stripe Checkout (future use) */}
+      {/*<button
+        onClick={() => buyNow(product.price_id)}
+        className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+      >
+        Pay with Stripe
+      </button>*/}
     </div>
   );
 }
