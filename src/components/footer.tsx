@@ -130,7 +130,7 @@ const Footer = () => {
         </div>
         <div className="text-center md:text-right">
           <a
-            href="https://hollali.pxxl.space/"
+            href="https://hollalikelvin.netlify.app/"
             className="font-bold hover:text-blue-400 transition"
           >
             Developed by Hollali

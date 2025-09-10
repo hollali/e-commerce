@@ -120,7 +120,7 @@ export default function SignUp() {
                 alt="User avatar"
                 width={80}
                 height={80}
-                className="rounded-full border-4 border-blue-500"
+                className="rounded-full border-4 border-white shadow-lg"
               />
               <div>
                 <p className="text-lg font-semibold text-gray-800">
