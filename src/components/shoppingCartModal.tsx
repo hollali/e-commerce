@@ -191,7 +191,6 @@ export default function ShoppingCartModal() {
                 onSuccess={handlePaystackSuccess}
                 onClose={handlePaystackClose}
               />
-
               {/* Stripe (future use) */}
               {/*<button
                 onClick={() => {
