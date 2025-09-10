@@ -15,6 +15,5 @@ export default defineConfig({
     schema: {
         types: schemaTypes,
     },
-    studioHost: 'e-commerce-nadia',
 
 })
