@@ -6,6 +6,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import { FaFacebookF, FaSnapchatGhost } from "react-icons/fa";
 
 const Footer = () => {
   const [dateTime, setDateTime] = useState<string>("");
@@ -75,7 +76,7 @@ const Footer = () => {
                 0203900892
               </a>
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center mb-3 sm:mb-4">
               <InstagramIcon fontSize="small" />
               <a
                 href="https://www.instagram.com/africvouge"
@@ -84,6 +85,28 @@ const Footer = () => {
                 className="ml-2 text-sm sm:text-base"
               >
                 Nadia
+              </a>
+            </div>
+            <div className="flex items-center mb-3 sm:mb-4">
+              <FaFacebookF size={18} />
+              <a
+                href="https://www.facebook.com/your-page"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ml-2 text-sm sm:text-base"
+              >
+                Facebook
+              </a>
+            </div>
+            <div className="flex items-center">
+              <FaSnapchatGhost size={20} />
+              <a
+                href="https://www.snapchat.com/add/your-username"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ml-2 text-sm sm:text-base"
+              >
+                Snapchat
               </a>
             </div>
           </div>
@@ -119,6 +142,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
+
       {/* Bottom bar */}
       <div className="w-full border-t border-gray-200 mt-6 sm:mt-8 py-3 sm:py-4 flex flex-col md:flex-row items-center justify-between px-4 text-xs sm:text-sm text-gray-600">
         <div className="mb-2 md:mb-0 text-center md:text-left">
