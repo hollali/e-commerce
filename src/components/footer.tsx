@@ -46,7 +46,7 @@ const Footer = () => {
           {/* Contact */}
           <div className="flex-1">
             <h4 className="font-semibold text-[18px] sm:text-[20px] py-2 sm:py-3">
-              Contact
+              Contact Us
             </h4>
             <div className="flex items-center mb-3 sm:mb-4">
               <EmailIcon fontSize="small" />
@@ -119,7 +119,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-
       {/* Bottom bar */}
       <div className="w-full border-t border-gray-200 mt-6 sm:mt-8 py-3 sm:py-4 flex flex-col md:flex-row items-center justify-between px-4 text-xs sm:text-sm text-gray-600">
         <div className="mb-2 md:mb-0 text-center md:text-left">
