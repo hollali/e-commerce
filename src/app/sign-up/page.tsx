@@ -9,6 +9,7 @@ import {
   signOut,
 } from "firebase/auth";
 import { auth, googleProvider } from "@/lib/firebaseConfig";
+import { FaSignOutAlt } from "react-icons/fa"; // ✅ logout icon
 
 export default function SignUp() {
   const [user, setUser] = useState<User | null>(null);
@@ -16,7 +17,6 @@ export default function SignUp() {
   const [signInLoading, setSignInLoading] = useState(false);
   const [error, setError] = useState<string>("");
 
-  // Watch auth state
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -28,11 +28,9 @@ export default function SignUp() {
   const handleGoogleSignIn = async () => {
     setSignInLoading(true);
     setError("");
-
     try {
       const result = await signInWithPopup(auth, googleProvider);
       console.log("✅ User signed in:", result.user);
-      console.log("🔍 Provider Data:", result.user.providerData);
     } catch (error: any) {
       console.error("❌ Google sign-in error:", error);
       setError("Failed to sign in. Please try again.");
@@ -61,7 +59,6 @@ export default function SignUp() {
   return (
     <div className="flex justify-center items-center min-h-screen px-4 bg-gray-50">
       <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-2xl text-center">
-        {/* Hero Image */}
         <div className="mb-6">
           <Image
             src="/model.jpeg"
@@ -73,14 +70,12 @@ export default function SignUp() {
           />
         </div>
 
-        {/* Error Message */}
         {error && (
           <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg">
             {error}
           </div>
         )}
 
-        {/* Show Google button if not signed in */}
         {!user ? (
           <>
             <h2 className="text-2xl font-bold mb-6 text-gray-800">Welcome!</h2>
@@ -126,14 +121,13 @@ export default function SignUp() {
                 <p>
                   <strong>Phone:</strong> {user.phoneNumber || "Not provided"}
                 </p>
-                {/*<p>
-                  <strong>UID:</strong> {user.uid}
-                </p>*/}
               </div>
+              {/* ✅ Sign Out button with icon */}
               <button
                 onClick={handleSignOut}
-                className="px-6 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
+                className="flex items-center justify-center gap-2 px-6 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
               >
+                <FaSignOutAlt className="text-lg" />
                 Sign Out
               </button>
             </div>
