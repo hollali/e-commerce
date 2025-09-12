@@ -3,8 +3,8 @@
 import { useShoppingCart } from "use-shopping-cart";
 import { PaystackButton } from "react-paystack";
 import Image from "next/image";
-import { useAuthState } from "react-firebase-hooks/auth"; // ✅ Firebase auth hook
-import { auth } from "../lib/firebaseConfig"; // ✅ your Firebase config
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../lib/firebaseConfig";
 import {
   Sheet,
   SheetContent,
@@ -24,10 +24,10 @@ export default function ShoppingCartModal() {
     incrementItem,
     decrementItem,
     totalPrice = 0,
-    checkoutSingleItem,
+    clearCart, // ✅ clear cart after payment
   } = useShoppingCart();
 
-  const [user, loading] = useAuthState(auth); // ✅ Firebase user
+  const [user, loading] = useAuthState(auth);
   const cedisSign = "\u20B5";
   const router = useRouter();
 
@@ -54,6 +54,11 @@ export default function ShoppingCartModal() {
 
   const handlePaystackSuccess = (reference: any) => {
     console.log("✅ Payment Success:", reference);
+
+    // ✅ Close cart + clear items
+    handleCartClick();
+    clearCart();
+
     // TODO: Save order to DB
   };
 
@@ -61,7 +66,6 @@ export default function ShoppingCartModal() {
     console.log("❌ Payment closed");
   };
 
-  // Show loading while checking Firebase auth
   if (loading) {
     return null;
   }
@@ -168,6 +172,7 @@ export default function ShoppingCartModal() {
               )}
             </ul>
           </div>
+
           {/* Checkout Section */}
           <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
             <div className="flex justify-between text-base font-medium text-gray-900">
@@ -181,26 +186,21 @@ export default function ShoppingCartModal() {
               Delivery fee is not added at checkout
             </p>
             <div className="mt-6 space-y-3">
-              {/* Paystack */}
-              <PaystackButton
-                {...paystackConfig}
-                text="Checkout"
-                className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700"
-                onSuccess={handlePaystackSuccess}
-                onClose={handlePaystackClose}
-              />
-              {/* Stripe (future use) */}
-              {/*<button
+              {/* Paystack Button wrapped */}
+              <div
                 onClick={() => {
-                  const firstItem = Object.values(cartDetails ?? {})[0];
-                  if (firstItem?.price_id) {
-                    checkoutSingleItem(firstItem.price_id);
-                  }
+                  // ✅ close sheet before opening Paystack modal
+                  handleCartClick();
                 }}
-                className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700"
               >
-                Pay with Stripe
-              </button>*/}
+                <PaystackButton
+                  {...paystackConfig}
+                  text="Checkout"
+                  className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700"
+                  onSuccess={handlePaystackSuccess}
+                  onClose={handlePaystackClose}
+                />
+              </div>
             </div>
             <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
               <p>
