@@ -37,7 +37,7 @@ const Footer = () => {
         {/* Brand */}
         <div className="mt-3 sm:mt-5">
           <Link href="/" className="font-black text-tertiary-light text-2xl">
-            Nadia&apos;s<span className="text-black">Beads</span>
+            Anet <span className="text-black">Beads</span>
           </Link>
         </div>
 
