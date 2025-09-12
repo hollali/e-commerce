@@ -31,7 +31,10 @@ export default async function Newest() {
           <h2 className="text-2xl font-bold tracking-tight text-gray-900">
             Our Newest Products
           </h2>
-          <Link className="text-blue-600 flex items-center gap-x-1" href="/all">
+          <Link
+            className="font-semibold text-blue-600 flex items-center gap-x-1"
+            href="/all"
+          >
             See All
             <span>
               <ArrowRight />
