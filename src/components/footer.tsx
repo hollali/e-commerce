@@ -95,7 +95,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="ml-2 text-sm sm:text-base"
               >
-                Facebook
+                Nadia
               </a>
             </div>
             <div className="flex items-center">
@@ -106,7 +106,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="ml-2 text-sm sm:text-base"
               >
-                Snapchat
+                Nadia
               </a>
             </div>
           </div>
