@@ -168,7 +168,6 @@ export default function ShoppingCartModal() {
               )}
             </ul>
           </div>
-
           {/* Checkout Section */}
           <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
             <div className="flex justify-between text-base font-medium text-gray-900">
@@ -181,7 +180,6 @@ export default function ShoppingCartModal() {
             <p className="mt-0.5 text-sm text-gray-500">
               Delivery fee is not added at checkout
             </p>
-
             <div className="mt-6 space-y-3">
               {/* Paystack */}
               <PaystackButton
@@ -204,7 +202,6 @@ export default function ShoppingCartModal() {
                 Pay with Stripe
               </button>*/}
             </div>
-
             <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
               <p>
                 OR{" "}
