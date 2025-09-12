@@ -74,7 +74,7 @@ export default function ShoppingCartModal() {
   if (!userEmail) {
     return (
       <Sheet open={shouldDisplayCart} onOpenChange={() => handleCartClick()}>
-        <SheetContent className="sm:max-w-lg w-[90vw]">
+        <SheetContent className="sm:max-w-lg w-[100vw]">
           <SheetHeader>
             <SheetTitle className="flex items-center justify-center h-full text-3xl text-black border-b pb-2 border-gray-200 font-bold">
               CART
@@ -95,7 +95,7 @@ export default function ShoppingCartModal() {
 
   return (
     <Sheet open={shouldDisplayCart} onOpenChange={() => handleCartClick()}>
-      <SheetContent className="sm:max-w-lg w-[90vw]">
+      <SheetContent className="sm:max-w-lg w-[100vw]">
         <SheetHeader>
           <SheetTitle className="flex items-center justify-center h-full text-3xl text-black border-b pb-2 border-gray-200 font-bold">
             CART
