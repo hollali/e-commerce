@@ -207,7 +207,7 @@ export default function ShoppingCartModal() {
                 OR{" "}
                 <button
                   onClick={() => handleCartClick()}
-                  className="font-medium text-blue-600 hover:text-primary/80"
+                  className="font-medium text-blue-600 hover:text-blue-300"
                 >
                   Continue Shopping
                 </button>
