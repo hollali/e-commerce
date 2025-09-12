@@ -7,6 +7,7 @@ import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Button } from "@/components/ui/button";
 import { useShoppingCart } from "use-shopping-cart";
+import Logo from "@/components/logo";
 
 const links = [
   { name: "Home", href: "/" },
@@ -18,18 +19,21 @@ const links = [
 
 export default function Navbar() {
   const pathname = usePathname();
-  const { handleCartClick, cartCount = 0 } = useShoppingCart(); // Default to 0 if cartCount is undefined
+  const { handleCartClick, cartCount = 0 } = useShoppingCart();
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <header className="mb-8 border-b">
       <div className="flex items-center justify-between mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl">
+        {/* Mobile menu button */}
         <button
           className="lg:hidden z-50 p-2 mr-4 rounded-md"
           onClick={() => setIsOpen(!isOpen)}
         >
           <MenuIcon />
         </button>
+
+        {/* Mobile side drawer */}
         <div
           className={`fixed top-0 left-0 h-full w-64 bg-white text-black shadow-lg transform transition-transform duration-300 z-40 ${
             isOpen ? "translate-x-0" : "-translate-x-full"
@@ -41,10 +45,8 @@ export default function Navbar() {
                 {links.map((link, idx) => (
                   <div key={idx}>
                     <li className="my-4">
-                      <Link href={link.href}>
-                        <span onClick={() => setIsOpen(false)}>
-                          {link.name}
-                        </span>
+                      <Link href={link.href} onClick={() => setIsOpen(false)}>
+                        {link.name}
                       </Link>
                     </li>
                     {idx < links.length - 1 && (
@@ -56,17 +58,19 @@ export default function Navbar() {
             </nav>
           </div>
         </div>
+
+        {/* Mobile backdrop overlay */}
         {isOpen && (
           <div
             className="fixed inset-0 bg-black opacity-50 z-30"
             onClick={() => setIsOpen(false)}
           ></div>
         )}
-        <Link href="/">
-          <h1 className="text-2xl md:text-4xl font-bold">
-            Anet <span className="text-black">Beads</span>
-          </h1>
-        </Link>
+
+        {/* Desktop logo */}
+        <Logo />
+
+        {/* Desktop nav links */}
         <nav className="hidden gap-12 lg:flex">
           {links.map((link, idx) => (
             <div key={idx}>
@@ -88,9 +92,9 @@ export default function Navbar() {
             </div>
           ))}
         </nav>
+
+        {/* Cart button */}
         <div className="flex items-center space-x-4">
-          {" "}
-          {/* Add space between buttons */}
           <Button
             variant="outline"
             onClick={() => handleCartClick()}
