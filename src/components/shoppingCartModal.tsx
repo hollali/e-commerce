@@ -138,7 +138,7 @@ export default function ShoppingCartModal() {
                           </p>
                         </div>
                         <div className="flex flex-1 items-end justify-between text-sm">
-                          <p className="text-gray-500">
+                          <p className="text-gray-500 font-bold">
                             Quantity: {entry.quantity}
                           </p>
                           <div className="flex space-x-2">

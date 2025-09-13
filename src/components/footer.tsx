@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
@@ -35,18 +36,25 @@ const Footer = () => {
   return (
     <footer className="mt-10 sm:mt-16 mb-0 bg-white">
       <div className="container mx-auto px-4">
-        {/* Brand */}
-        <div className="mt-3 sm:mt-5">
-          <Link href="/" className="font-black text-tertiary-light text-2xl">
-            Anet <span className="text-black">Beads</span>
-          </Link>
-        </div>
+        {/* Logo + Contact & Info */}
+        <div className="flex flex-col sm:flex-row gap-8 sm:gap-16 items-start justify-between">
+          {/* Brand with Logo */}
+          <div className="flex-shrink-0">
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/logo.png"
+                alt="Anet Beads Logo"
+                width={150}
+                height={50}
+                className="h-auto w-auto max-w-[160px] sm:max-w-[180px]"
+                priority
+              />
+            </Link>
+          </div>
 
-        {/* Contact & Info */}
-        <div className="flex flex-col sm:flex-row gap-8 sm:gap-16 items-start justify-between mt-6">
           {/* Contact */}
           <div className="flex-1">
-            <h4 className="font-semibold text-[18px] sm:text-[20px] py-2 sm:py-3">
+            <h4 className="font-semibold text-[18px] sm:text-[20px] py-2 sm:py-2">
               Contact Us
             </h4>
             <div className="flex items-center mb-3 sm:mb-4">
