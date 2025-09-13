@@ -64,9 +64,7 @@ export default function ShoppingCartModal() {
     console.log("❌ Payment closed");
   };
 
-  if (loading) {
-    return null;
-  }
+  if (loading) return null;
 
   // If not logged in → prompt login
   if (!userEmail) {
@@ -109,7 +107,7 @@ export default function ShoppingCartModal() {
                   <h1 className="text-2xl font-semibold">
                     Your cart is empty !!
                   </h1>
-                  <Link href="/">
+                  <Link href="/" onClick={() => handleCartClick()}>
                     <button className="mt-6 bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
                       Shop Now
                     </button>
@@ -176,22 +174,25 @@ export default function ShoppingCartModal() {
               )}
             </ul>
           </div>
-          {/* ✅ Clear Cart button centered under products */}
-          <div className="flex justify-center mt-10 mb-6">
-            <button
-              onClick={() => {
-                if (
-                  window.confirm("Are you sure you want to clear your cart?")
-                ) {
-                  clearCart();
-                }
-              }}
-              className="flex items-center gap-2 bg-red-600 text-white px-5 py-2 rounded hover:bg-red-700 transition"
-            >
-              <FaTrash size={18} />
-              Clear
-            </button>
-          </div>
+
+          {/* ✅ Clear Cart button (only if cart has items) */}
+          {cartCount > 0 && (
+            <div className="flex justify-center mt-10 mb-6">
+              <button
+                onClick={() => {
+                  if (
+                    window.confirm("Are you sure you want to clear your cart?")
+                  ) {
+                    clearCart();
+                  }
+                }}
+                className="flex items-center gap-2 bg-red-600 text-white px-5 py-2 rounded hover:bg-red-700 transition"
+              >
+                <FaTrash size={18} />
+                Clear
+              </button>
+            </div>
+          )}
 
           {/* Checkout Section */}
           {cartCount > 0 && (
