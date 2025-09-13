@@ -177,7 +177,7 @@ export default function ShoppingCartModal() {
 
           {/* ✅ Clear Cart button (only if cart has items) */}
           {cartCount > 0 && (
-            <div className="flex justify-center mt-10 mb-6">
+            <div className="flex justify-center mt-10 mb-3">
               <button
                 onClick={() => {
                   if (
