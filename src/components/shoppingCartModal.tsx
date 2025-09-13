@@ -189,7 +189,7 @@ export default function ShoppingCartModal() {
               className="flex items-center gap-2 bg-red-600 text-white px-5 py-2 rounded hover:bg-red-700 transition"
             >
               <FaTrash size={18} />
-              Clear Cart
+              Clear
             </button>
           </div>
 
