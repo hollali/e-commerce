@@ -163,7 +163,7 @@ export default function ShoppingCartModal() {
                               onClick={() => removeItem(entry.id)}
                               className="font-medium text-red-600 hover:text-red-300"
                             >
-                              Remove
+                              <FaTrash size={18} />
                             </button>
                           </div>
                         </div>
