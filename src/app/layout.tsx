@@ -9,7 +9,7 @@ import ShoppingCartModal from "@/components/shoppingCartModal";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Annette's Beads",
+  title: "Anet's Beads",
   description:
     "Discover the latest trends and timeless styles at Nadia's Collections",
   icons: {
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     apple: "/apple-icon.png", // for iOS devices
   },
   openGraph: {
-    title: "Annette's Beads",
+    title: "Anet's Beads",
     description:
       "Discover the latest trends and timeless styles at Annette's Beads",
     url: "https://www.africvouge.com",
