@@ -288,7 +288,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- Email: support@dheztinykartel@gmail.com / @hollali
+- Email: support@dheztinykartel@gmail.com
 - Documentation: [Link to docs]
 - Issues: [GitHub Issues](https://github.com/hollali/nadia/issues)
 
