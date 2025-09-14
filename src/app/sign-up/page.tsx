@@ -61,7 +61,7 @@ export default function SignUp() {
       <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-2xl text-center">
         <div className="mb-6">
           <Image
-            src="public/nadia.jpeg"
+            src="/nadia.jpeg"
             alt="Sign Up Illustration"
             width={300}
             height={200}
