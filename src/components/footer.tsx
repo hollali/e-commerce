@@ -84,7 +84,7 @@ const Footer = () => {
                 0203900892
               </a>
             </div>
-            <div className="flex items-center mb-3 sm:mb-4">
+            {/*<div* className="flex items-center mb-3 sm:mb-4">
               <InstagramIcon fontSize="small" />
               <a
                 href="https://www.instagram.com/africvouge"
@@ -94,7 +94,7 @@ const Footer = () => {
               >
                 Nadia
               </a>
-            </div>
+            </div*/}
             <div className="flex items-center mb-3 sm:mb-4">
               <FaFacebookF size={18} />
               <a
