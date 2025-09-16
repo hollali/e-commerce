@@ -36,50 +36,6 @@ export default function ShoppingCartModal() {
   const userEmail = user?.email || "";
   const userName = user?.displayName || "";
 
-  // ✅ Save order when payment succeeds
-  const handlePaystackSuccess = async (reference: any) => {
-    console.log("✅ Payment Success:", reference);
-
-    // Prepare order data
-    const order = {
-      userEmail,
-      userName,
-      items: Object.values(cartDetails ?? {}).map((entry) => ({
-        id: entry.id,
-        name: entry.name,
-        price: entry.price,
-        quantity: entry.quantity,
-        image: entry.image,
-      })),
-      total: totalPrice,
-      paymentReference: reference.reference,
-      status: "paid",
-    };
-
-    try {
-      const res = await fetch("/api/orders", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(order),
-      });
-
-      const data = await res.json();
-      if (data.success) {
-        console.log("📦 Order saved:", data.order);
-        clearCart();
-        handleCartClick();
-      } else {
-        console.error("❌ Failed to save order:", data.error);
-      }
-    } catch (err) {
-      console.error("⚠️ Error submitting order:", err);
-    }
-  };
-
-  const handlePaystackClose = () => {
-    console.log("❌ Payment closed");
-  };
-
   // Paystack config
   const paystackConfig = {
     reference: new Date().getTime().toString(),
@@ -97,6 +53,17 @@ export default function ShoppingCartModal() {
         },
       ],
     },
+  };
+
+  const handlePaystackSuccess = (reference: any) => {
+    console.log("✅ Payment Success:", reference);
+    handleCartClick();
+    clearCart();
+    // TODO: Save order to DB
+  };
+
+  const handlePaystackClose = () => {
+    console.log("❌ Payment closed");
   };
 
   if (loading) return null;
@@ -243,7 +210,11 @@ export default function ShoppingCartModal() {
                 Delivery fee is not added at checkout
               </p>
               <div className="mt-6 space-y-3">
-                <div onClick={() => handleCartClick()}>
+                <div
+                  onClick={() => {
+                    handleCartClick();
+                  }}
+                >
                   <PaystackButton
                     {...paystackConfig}
                     text="Checkout"
