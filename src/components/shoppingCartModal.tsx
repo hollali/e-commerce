@@ -34,11 +34,13 @@ export default function ShoppingCartModal() {
 
   // Use Firebase email if logged in
   const userEmail = user?.email || "";
+  const userName = user?.displayName || "";
 
   // Paystack config
   const paystackConfig = {
     reference: new Date().getTime().toString(),
     email: userEmail,
+    name: user?.displayName || "",
     amount: totalPrice * 100,
     currency: "GHS",
     publicKey: process.env.NEXT_PUBLIC_PAYSTACK_KEY || "",
