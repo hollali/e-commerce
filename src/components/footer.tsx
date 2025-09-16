@@ -44,8 +44,8 @@ const Footer = () => {
               <Image
                 src="/logo.png"
                 alt="Anet Beads Logo"
-                width={100}
-                height={50}
+                width={80}
+                height={40}
                 className="h-auto w-auto max-w-[120px] sm:max-w-[140px]"
                 priority
               />
