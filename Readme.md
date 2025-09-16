@@ -58,6 +58,11 @@ A full-stack e-commerce solution built with modern web technologies, featuring s
 
 ![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
 
+### Database
+
+![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
+![MongoDB Atlas](https://img.shields.io/badge/MongoDB%20Atlas-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+
 ### Content Management
 
 ![Sanity](https://img.shields.io/badge/Sanity-F03E2F?style=for-the-badge&logo=sanity&logoColor=white)
@@ -79,6 +84,7 @@ A full-stack e-commerce solution built with modern web technologies, featuring s
 - Node.js 18+
 - npm or yarn
 - Firebase account
+- MongoDB Atlas account
 - Stripe account
 - Paystack account
 - Sanity account
@@ -88,7 +94,7 @@ A full-stack e-commerce solution built with modern web technologies, featuring s
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/hollali/nadia.git
+   git clone https://github.com/hollali/e-commerce.git
    cd nadia
    ```
 
@@ -112,6 +118,10 @@ A full-stack e-commerce solution built with modern web technologies, featuring s
    NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
    NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
 
+   # MongoDB Configuration
+   MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/database_name?retryWrites=true&w=majority
+   MONGODB_DB=your_database_name
+
    # Sanity Configuration
    NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id
    NEXT_PUBLIC_SANITY_DATASET=production
@@ -132,7 +142,18 @@ A full-stack e-commerce solution built with modern web technologies, featuring s
    NEXTAUTH_SECRET=your_nextauth_secret
    ```
 
-4. **Setup Sanity Studio**
+4. **Setup MongoDB Atlas**
+
+   ```bash
+   # Install MongoDB driver
+   npm install mongodb mongoose
+
+   # Create your MongoDB Atlas cluster and get connection string
+   # Add your IP address to the whitelist
+   # Create database user with appropriate permissions
+   ```
+
+5. **Setup Sanity Studio**
 
    ```bash
    # Initialize Sanity in your project
@@ -144,7 +165,7 @@ A full-stack e-commerce solution built with modern web technologies, featuring s
    npm run dev
    ```
 
-5. **Run the development server**
+6. **Run the development server**
 
    ```bash
    npm run dev
@@ -169,9 +190,15 @@ A full-stack e-commerce solution built with modern web technologies, featuring s
 │   └── layout/           # Layout components
 ├── lib/                  # Utility functions
 │   ├── firebase.ts       # Firebase configuration
+│   ├── mongodb.ts        # MongoDB configuration
 │   ├── sanity.ts         # Sanity configuration
 │   ├── stripe.ts         # Stripe configuration
 │   └── utils.ts          # Utility functions
+├── models/               # MongoDB/Mongoose models
+│   ├── User.ts           # User model
+│   ├── Product.ts        # Product model
+│   ├── Order.ts          # Order model
+│   └── Category.ts       # Category model
 ├── sanity/               # Sanity CMS
 │   ├── schemas/          # Content schemas
 │   ├── lib/              # Sanity utilities
@@ -189,6 +216,15 @@ A full-stack e-commerce solution built with modern web technologies, featuring s
 2. Enable Authentication with Google and Email providers
 3. Create a Firestore database
 4. Add your domain to authorized domains in Authentication settings
+
+### MongoDB Atlas Setup
+
+1. Create a MongoDB Atlas account at [MongoDB Atlas](https://cloud.mongodb.com)
+2. Create a new cluster (free tier available)
+3. Create database user with read/write permissions
+4. Whitelist your IP address or use 0.0.0.0/0 for development
+5. Get your connection string and add it to environment variables
+6. Create your database and collections for products, users, orders, etc.
 
 ### Sanity Setup
 
@@ -267,6 +303,15 @@ npx sanity deploy
 - [x] Real-time Content Updates
 - [x] Media Asset Management
 
+### Database Features
+
+- [x] MongoDB Atlas Integration
+- [x] User Data Management
+- [x] Order History Storage
+- [x] Product Inventory Management
+- [x] Cart Persistence
+- [x] Analytics Data Storage
+
 ### Admin Features
 
 - [x] Sanity Studio for Content Management
@@ -298,6 +343,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Tailwind CSS](https://tailwindcss.com/) for utility-first CSS
 - [shadcn/ui](https://ui.shadcn.com/) for beautiful components
 - [Firebase](https://firebase.google.com/) for authentication and database
+- [MongoDB](https://www.mongodb.com/) for flexible document database
+- [MongoDB Atlas](https://cloud.mongodb.com/) for cloud database hosting
 - [Sanity](https://www.sanity.io/) for headless CMS and content management
 - [Stripe](https://stripe.com/) for payment processing
 - [Paystack](https://paystack.com/) for African payment solutions
