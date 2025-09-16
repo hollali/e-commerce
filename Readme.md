@@ -95,7 +95,7 @@ A full-stack e-commerce solution built with modern web technologies, featuring s
 
    ```bash
    git clone https://github.com/hollali/e-commerce.git
-   cd nadia
+   cd e-commerce
    ```
 
 2. **Install dependencies**
