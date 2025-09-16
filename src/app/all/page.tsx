@@ -2,7 +2,7 @@ import { simplifiedProduct } from "@/app/interface";
 import { client } from "@/lib/sanity";
 import Link from "next/link";
 import Image from "next/image";
-import { FaHeart, FaShoppingCart } from "react-icons/fa";
+import { FaHeart, FaShoppingCart, FaStar } from "react-icons/fa";
 
 async function getData() {
   const query = `*[_type == "product"] | order(_createdAt desc) {
@@ -59,6 +59,12 @@ export default async function AllProducts() {
                   <p className="mt-1 text-sm text-gray-500">
                     {product.categoryName}
                   </p>
+                  {/* ⭐ Rating Stars */}
+                  <div className="flex items-center space-x-1 mt-1 text-yellow-500">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <FaStar key={i} />
+                    ))}
+                  </div>
                   <p className="text-sm font-medium text-gray-900">
                     {cedisSign} {product.price}
                   </p>

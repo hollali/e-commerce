@@ -2,7 +2,7 @@ import { client } from "@/lib/sanity";
 import { simplifiedProduct } from "../interface";
 import Image from "next/image";
 import Link from "next/link";
-import { FaHeart, FaShoppingCart } from "react-icons/fa";
+import { FaHeart, FaShoppingCart, FaStar } from "react-icons/fa";
 
 async function getData(category: string) {
   const query = `*[_type == "product" && category->name == "${category}"]{
@@ -63,7 +63,14 @@ export default async function CategoryPage({
                   <p className="mt-1 text-sm text-gray-500">
                     {product.categoryName}
                   </p>
-                  <p className="text-sm font-medium text-gray-900">
+
+                  {/* ⭐ Rating Stars */}
+                  <div className="flex items-center space-x-1 mt-1 text-yellow-500">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <FaStar key={i} />
+                    ))}
+                  </div>
+                  <p className="text-sm font-medium text-gray-900 mt-1">
                     {cedisSign} {product.price}
                   </p>
                 </div>

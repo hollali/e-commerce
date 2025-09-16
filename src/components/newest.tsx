@@ -1,7 +1,7 @@
 import { simplifiedProduct } from "@/app/interface";
 import { client } from "@/lib/sanity";
 import { ArrowRight } from "lucide-react";
-import { FaHeart, FaShoppingCart } from "react-icons/fa";
+import { FaHeart, FaShoppingCart, FaStar } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -68,6 +68,12 @@ export default async function Newest() {
                   <p className="mt-1 text-sm text-gray-500">
                     {product.categoryName}
                   </p>
+                  {/* ⭐ Rating Stars */}
+                  <div className="flex items-center space-x-1 mt-1 text-yellow-500">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <FaStar key={i} />
+                    ))}
+                  </div>
                   <p className="text-sm font-medium text-gray-900">
                     {cedisSign} {product.price}
                   </p>
