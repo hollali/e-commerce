@@ -34,7 +34,7 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer className="mt-10 sm:mt-16 mb-0 bg-white">
+    <footer className="mt-8 sm:mt-12 mb-0 bg-white">
       <div className="container mx-auto px-4">
         {/* Logo + Contact & Info */}
         <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 items-start justify-between">
