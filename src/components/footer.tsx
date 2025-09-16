@@ -37,7 +37,7 @@ const Footer = () => {
     <footer className="mt-10 sm:mt-16 mb-0 bg-white">
       <div className="container mx-auto px-4">
         {/* Logo + Contact & Info */}
-        <div className="flex flex-col sm:flex-row gap-8 sm:gap-16 items-start justify-between">
+        <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 items-start justify-between">
           {/* Brand with Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
