@@ -93,7 +93,7 @@ export default async function Hero() {
               className="object-cover group-hover:scale-110 transition-transform duration-300"
             />
             <span className="absolute inset-0 flex items-center justify-center text-white font-semibold text-sm md:text-lg bg-black/40 group-hover:bg-black/50 transition">
-              Trimmings
+              Accessories
             </span>
           </Link>
         </div>
