@@ -14,7 +14,7 @@ const links = [
   { name: "Women", href: "/Women" },
   { name: "Men", href: "/Men" },
   { name: "Accessories", href: "/Accessories" },
-  { name: "My Orders", href: "/orders" },
+  //{ name: "My Orders", href: "/orders" },
   { name: "Sign up", href: "/sign-up" },
 ];
 
