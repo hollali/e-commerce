@@ -82,28 +82,55 @@ export default async function AllProducts() {
           ))}
         </div>
       </div>
-      <div className="flex justify-center items-center h-full">
-        <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
-          <div className="flex h-12 w-64 divide-x overflow-hidden rounded-lg border">
-            <Link
-              href="/Men"
-              className="flex w-1/3 items-center justify-center text-gray-500 transition duration-100 hover:bg-gray-100 active:bg-gray-200"
-            >
+      <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
+        <div className="flex gap-6 flex-wrap justify-center">
+          {/* Men */}
+          <Link
+            href="/Men"
+            className="relative flex h-24 w-24 md:h-32 md:w-32 items-center justify-center rounded-full overflow-hidden shadow-md group"
+          >
+            <Image
+              src="/maleitem.png" // ✅ replace with actual image path
+              alt="Men"
+              fill
+              className="object-cover group-hover:scale-110 transition-transform duration-300"
+            />
+            <span className="absolute inset-0 flex items-center justify-center text-white font-semibold text-sm md:text-lg bg-black/40 group-hover:bg-black/50 transition">
               Men
-            </Link>
-            <Link
-              href="/Women"
-              className="flex w-1/3 items-center justify-center text-gray-500 transition duration-100 hover:bg-gray-100 active:bg-gray-200"
-            >
+            </span>
+          </Link>
+
+          {/* Women */}
+          <Link
+            href="/Women"
+            className="relative flex h-24 w-24 md:h-32 md:w-32 items-center justify-center rounded-full overflow-hidden shadow-md group"
+          >
+            <Image
+              src="/model.jpeg"
+              alt="Women"
+              fill
+              className="object-cover group-hover:scale-110 transition-transform duration-300"
+            />
+            <span className="absolute inset-0 flex items-center justify-center text-white font-semibold text-sm md:text-lg bg-black/40 group-hover:bg-black/50 transition">
               Women
-            </Link>
-            <Link
-              href="/Accessories"
-              className="flex w-1/3 items-center justify-center text-gray-500 transition duration-100 hover:bg-gray-100 active:bg-gray-200"
-            >
+            </span>
+          </Link>
+
+          {/* Trimmings */}
+          <Link
+            href="/Accessories"
+            className="relative flex h-24 w-24 md:h-32 md:w-32 items-center justify-center rounded-full overflow-hidden shadow-md group"
+          >
+            <Image
+              src="/bracelets.jpeg"
+              alt="Trimmings"
+              fill
+              className="object-cover group-hover:scale-110 transition-transform duration-300"
+            />
+            <span className="absolute inset-0 flex items-center justify-center text-white font-semibold text-sm md:text-lg bg-black/40 group-hover:bg-black/50 transition">
               Accessories
-            </Link>
-          </div>
+            </span>
+          </Link>
         </div>
       </div>
     </div>
