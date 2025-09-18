@@ -87,7 +87,7 @@ export default async function CategoryPage({
           ))}
         </div>
       </div>
-      <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
+      <div className="flex flex-col items-center justify-center gap-8 md:flex-row">
         <div className="flex gap-6 flex-wrap justify-center">
           {/* Men */}
           <Link
