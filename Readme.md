@@ -1,6 +1,6 @@
 # 🛍️ Modern E-commerce Platform
 
-A full-stack e-commerce solution built with modern web technologies, featuring secure authentication, multiple payment gateways, headless CMS, and a beautiful, responsive design.
+A full-stack e-commerce solution built with modern web technologies, featuring secure authentication, multiple payment gateways, headless CMS, error tracking, and a beautiful, responsive design.
 
 <!--![Project Banner](https://via.placeholder.com/800x400/4F46E5/ffffff?text=E-commerce+Platform)-->
 
@@ -41,6 +41,14 @@ A full-stack e-commerce solution built with modern web technologies, featuring s
 - Dark/Light mode support
 - Smooth animations and interactions
 
+### 📊 Monitoring & Error Tracking
+
+- **Sentry** for real-time error tracking and performance monitoring
+- Application performance monitoring (APM)
+- User session replay for debugging
+- Custom error boundaries and logging
+- Release tracking and deployment monitoring
+
 ## 🚀 Tech Stack
 
 ### Frontend & Framework
@@ -72,6 +80,10 @@ A full-stack e-commerce solution built with modern web technologies, featuring s
 ![Stripe](https://img.shields.io/badge/Stripe-626CD9?style=for-the-badge&logo=Stripe&logoColor=white)
 ![Paystack](https://img.shields.io/badge/Paystack-011C2A?style=for-the-badge&logo=paystack&logoColor=white)
 
+### Monitoring & Analytics
+
+![Sentry](https://img.shields.io/badge/Sentry-362D59?style=for-the-badge&logo=sentry&logoColor=white)
+
 ### Deployment & Hosting
 
 ![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)
@@ -88,6 +100,7 @@ A full-stack e-commerce solution built with modern web technologies, featuring s
 - Stripe account
 - Paystack account
 - Sanity account
+- Sentry account
 
 ### Setup
 
@@ -106,7 +119,15 @@ A full-stack e-commerce solution built with modern web technologies, featuring s
    yarn install
    ```
 
-3. **Environment Variables**
+3. **Install Sentry**
+
+   ```bash
+   npm install @sentry/nextjs @sentry/tracing
+   # or
+   yarn add @sentry/nextjs @sentry/tracing
+   ```
+
+4. **Environment Variables**
    Create a `.env.local` file in the root directory:
 
    ```env
@@ -137,12 +158,18 @@ A full-stack e-commerce solution built with modern web technologies, featuring s
    NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY=pk_test_...
    PAYSTACK_SECRET_KEY=sk_test_...
 
+   # Sentry Configuration
+   NEXT_PUBLIC_SENTRY_DSN=your_sentry_dsn
+   SENTRY_ORG=your_sentry_org
+   SENTRY_PROJECT=your_sentry_project
+   SENTRY_AUTH_TOKEN=your_sentry_auth_token
+
    # App Configuration
    NEXTAUTH_URL=http://localhost:3000
    NEXTAUTH_SECRET=your_nextauth_secret
    ```
 
-4. **Setup MongoDB Atlas**
+5. **Setup MongoDB Atlas**
 
    ```bash
    # Install MongoDB driver
@@ -153,7 +180,7 @@ A full-stack e-commerce solution built with modern web technologies, featuring s
    # Create database user with appropriate permissions
    ```
 
-5. **Setup Sanity Studio**
+6. **Setup Sanity Studio**
 
    ```bash
    # Initialize Sanity in your project
@@ -165,7 +192,17 @@ A full-stack e-commerce solution built with modern web technologies, featuring s
    npm run dev
    ```
 
-6. **Run the development server**
+7. **Setup Sentry**
+
+   ```bash
+   # Initialize Sentry configuration
+   npx @sentry/wizard -i nextjs
+
+   # This will create sentry.client.config.js, sentry.server.config.js,
+   # and sentry.edge.config.js files
+   ```
+
+8. **Run the development server**
 
    ```bash
    npm run dev
@@ -187,12 +224,14 @@ A full-stack e-commerce solution built with modern web technologies, featuring s
 │   ├── ui/               # shadcn/ui components
 │   ├── auth/             # Authentication components
 │   ├── shop/             # Shopping components
+│   ├── error/            # Error boundary components
 │   └── layout/           # Layout components
 ├── lib/                  # Utility functions
 │   ├── firebase.ts       # Firebase configuration
 │   ├── mongodb.ts        # MongoDB configuration
 │   ├── sanity.ts         # Sanity configuration
 │   ├── stripe.ts         # Stripe configuration
+│   ├── sentry.ts         # Sentry utilities
 │   └── utils.ts          # Utility functions
 ├── models/               # MongoDB/Mongoose models
 │   ├── User.ts           # User model
@@ -205,7 +244,11 @@ A full-stack e-commerce solution built with modern web technologies, featuring s
 │   └── sanity.config.ts  # Sanity configuration
 ├── hooks/                # Custom React hooks
 ├── types/                # TypeScript type definitions
-└── public/              # Static assets
+├── public/              # Static assets
+├── sentry.client.config.js  # Sentry client configuration
+├── sentry.server.config.js  # Sentry server configuration
+├── sentry.edge.config.js    # Sentry edge configuration
+└── next.config.js        # Next.js configuration with Sentry
 ```
 
 ## 🔧 Configuration
@@ -245,6 +288,15 @@ A full-stack e-commerce solution built with modern web technologies, featuring s
 2. Get your public and secret keys
 3. Configure webhook endpoints
 
+### Sentry Setup
+
+1. Create a Sentry account at [Sentry.io](https://sentry.io/)
+2. Create a new project for your Next.js application
+3. Get your DSN from the project settings
+4. Configure error boundaries and performance monitoring
+5. Set up release tracking for deployment monitoring
+6. Configure alerts and notifications for critical errors
+
 ## 🚀 Deployment
 
 ### Deploy to Netlify
@@ -269,6 +321,15 @@ vercel --prod
 ```bash
 cd sanity
 npx sanity deploy
+```
+
+### Sentry Release Deployment
+
+```bash
+# Create and finalize a release in Sentry
+npx @sentry/cli releases new $RELEASE_VERSION
+npx @sentry/cli releases set-commits $RELEASE_VERSION --auto
+npx @sentry/cli releases finalize $RELEASE_VERSION
 ```
 
 ## 📱 Features Overview
@@ -312,9 +373,19 @@ npx sanity deploy
 - [x] Cart Persistence
 - [x] Analytics Data Storage
 
+### Monitoring & Error Tracking
+
+- [x] Sentry Error Tracking
+- [x] Performance Monitoring
+- [x] Custom Error Boundaries
+- [x] User Session Replay
+- [x] Release Tracking
+- [x] Real-time Alerts
+
 ### Admin Features
 
 - [x] Sanity Studio for Content Management
+- [x] Sentry Dashboard for Error Monitoring
 - [ ] Order Management Dashboard
 - [ ] User Management
 - [ ] Analytics Dashboard
@@ -348,6 +419,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Sanity](https://www.sanity.io/) for headless CMS and content management
 - [Stripe](https://stripe.com/) for payment processing
 - [Paystack](https://paystack.com/) for African payment solutions
+- [Sentry](https://sentry.io/) for error tracking and performance monitoring
 
 ---
 
