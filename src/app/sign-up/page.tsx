@@ -10,7 +10,7 @@ import {
   deleteUser,
 } from "firebase/auth";
 import { auth, googleProvider } from "@/lib/firebaseConfig";
-import { FaSignOutAlt, FaTrashAlt } from "react-icons/fa"; // ✅ logout + delete icons
+import { FaSignOutAlt, FaTrashAlt } from "react-icons/fa";
 
 export default function SignUp() {
   const [user, setUser] = useState<User | null>(null);
@@ -42,33 +42,36 @@ export default function SignUp() {
   };
 
   const handleSignOut = async () => {
+    setActionLoading(true);
     try {
       await signOut(auth);
       console.log("✅ User signed out");
     } catch (error) {
       console.error("❌ Sign-out error:", error);
+    } finally {
+      setActionLoading(false);
     }
   };
 
   const handleDeleteAccount = async () => {
     if (!user) return;
-    const confirmDelete = confirm(
-      "⚠️ Are you sure you want to permanently delete your account? This cannot be undone."
-    );
-    if (!confirmDelete) return;
-
+    if (
+      !confirm(
+        "⚠️ Are you sure you want to delete your account? This action cannot be undone."
+      )
+    ) {
+      return;
+    }
     setActionLoading(true);
-    setError("");
     try {
       await deleteUser(user);
-      console.log("✅ User account deleted");
+      console.log("🗑️ User account deleted");
+      setUser(null);
     } catch (error: any) {
-      console.error("❌ Delete account error:", error);
-      if (error.code === "auth/requires-recent-login") {
-        setError("Please sign in again before deleting your account.");
-      } else {
-        setError("Failed to delete account. Please try again.");
-      }
+      console.error("❌ Account deletion error:", error);
+      setError(
+        "Failed to delete account. Please reauthenticate and try again."
+      );
     } finally {
       setActionLoading(false);
     }
@@ -127,7 +130,7 @@ export default function SignUp() {
             </button>
           </>
         ) : (
-          <div className="space-y-4">
+          <div className="space-y-6">
             <h2 className="text-2xl font-bold text-gray-800">Welcome back!</h2>
             <div className="flex flex-col items-center space-y-4">
               <Image
@@ -148,25 +151,26 @@ export default function SignUp() {
                   <strong>Phone:</strong> {user.phoneNumber || "Not provided"}
                 </p>
               </div>
-              {/* ✅ Sign Out button with icon */}
-              <div className="flex gap-3">
-                <button
-                  onClick={handleSignOut}
-                  disabled={actionLoading}
-                  className="flex items-center justify-center gap-2 px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition disabled:opacity-50"
-                >
-                  <FaSignOutAlt className="text-lg" />
-                  Sign Out
-                </button>
-                <button
-                  onClick={handleDeleteAccount}
-                  disabled={actionLoading}
-                  className="flex items-center justify-center gap-2 px-6 py-2 bg-red-700 text-white rounded-lg hover:bg-red-800 transition disabled:opacity-50"
-                >
-                  <FaTrashAlt className="text-lg" />
-                  {actionLoading ? "Deleting..." : "Delete Account"}
-                </button>
-              </div>
+            </div>
+
+            {/* ✅ Responsive buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 w-full">
+              <button
+                onClick={handleSignOut}
+                disabled={actionLoading}
+                className="flex items-center justify-center gap-2 w-full sm:flex-1 px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition disabled:opacity-50"
+              >
+                <FaSignOutAlt className="text-lg" />
+                Sign Out
+              </button>
+              <button
+                onClick={handleDeleteAccount}
+                disabled={actionLoading}
+                className="flex items-center justify-center gap-2 w-full sm:flex-1 px-6 py-2 bg-red-700 text-white rounded-lg hover:bg-red-800 transition disabled:opacity-50"
+              >
+                <FaTrashAlt className="text-lg" />
+                {actionLoading ? "Deleting..." : "Delete Account"}
+              </button>
             </div>
           </div>
         )}
