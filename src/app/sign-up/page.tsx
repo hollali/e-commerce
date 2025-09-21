@@ -153,7 +153,7 @@ export default function SignUp() {
                 <button
                   onClick={handleSignOut}
                   disabled={actionLoading}
-                  className="flex items-center justify-center gap-2 px-6 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition disabled:opacity-50"
+                  className="flex items-center justify-center gap-2 px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition disabled:opacity-50"
                 >
                   <FaSignOutAlt className="text-lg" />
                   Sign Out
@@ -161,7 +161,7 @@ export default function SignUp() {
                 <button
                   onClick={handleDeleteAccount}
                   disabled={actionLoading}
-                  className="flex items-center justify-center gap-2 px-6 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-800 transition disabled:opacity-50"
+                  className="flex items-center justify-center gap-2 px-6 py-2 bg-red-700 text-white rounded-lg hover:bg-red-800 transition disabled:opacity-50"
                 >
                   <FaTrashAlt className="text-lg" />
                   {actionLoading ? "Deleting..." : "Delete Account"}
