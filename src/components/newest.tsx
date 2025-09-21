@@ -35,7 +35,7 @@ export default async function Newest() {
             className="font-semibold text-blue-600 flex items-center gap-x-1"
             href="/all"
           >
-            See All
+            View All
             <span>
               <ArrowRight />
             </span>
