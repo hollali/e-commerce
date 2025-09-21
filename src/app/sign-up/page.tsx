@@ -87,13 +87,14 @@ export default function SignUp() {
 
   return (
     <div className="flex justify-center items-center min-h-screen px-4 bg-gray-50">
-      <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-2xl text-center">
+      {/* ✅ Card made larger on big screens */}
+      <div className="w-full max-w-md sm:max-w-lg lg:max-w-xl p-8 bg-white shadow-lg rounded-2xl text-center">
         <div className="mb-6">
           <Image
             src="/nadia.jpeg"
             alt="Sign Up Illustration"
-            width={300}
-            height={200}
+            width={350}
+            height={220}
             className="mx-auto rounded-lg"
             priority
           />
@@ -136,8 +137,8 @@ export default function SignUp() {
               <Image
                 src={user.photoURL || "/model.jpeg"}
                 alt="User avatar"
-                width={80}
-                height={80}
+                width={90}
+                height={90}
                 className="rounded-full border-4 border-white shadow-lg"
               />
               <div className="text-left space-y-1">
@@ -158,7 +159,7 @@ export default function SignUp() {
               <button
                 onClick={handleSignOut}
                 disabled={actionLoading}
-                className="flex items-center justify-center gap-2 w-full sm:flex-1 px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition disabled:opacity-50"
+                className="flex items-center justify-center gap-2 w-full sm:flex-1 px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-800 transition disabled:opacity-50"
               >
                 <FaSignOutAlt className="text-lg" />
                 Sign Out
@@ -166,7 +167,7 @@ export default function SignUp() {
               <button
                 onClick={handleDeleteAccount}
                 disabled={actionLoading}
-                className="flex items-center justify-center gap-2 w-full sm:flex-1 px-6 py-2 bg-red-700 text-white rounded-lg hover:bg-red-800 transition disabled:opacity-50"
+                className="flex items-center justify-center gap-2 w-full sm:flex-1 px-6 py-2 bg-red-500 text-white rounded-lg hover:bg-red-800 transition disabled:opacity-50"
               >
                 <FaTrashAlt className="text-lg" />
                 {actionLoading ? "Deleting..." : "Delete Account"}
