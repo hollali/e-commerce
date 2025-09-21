@@ -67,10 +67,8 @@ export default function Navbar() {
             onClick={() => setIsOpen(false)}
           ></div>
         )}
-
         {/* Desktop logo */}
         <Logo />
-
         {/* Desktop nav links */}
         <nav className="hidden gap-12 lg:flex">
           {links.map((link, idx) => (
