@@ -7,14 +7,16 @@ import {
   onAuthStateChanged,
   User,
   signOut,
+  deleteUser,
 } from "firebase/auth";
 import { auth, googleProvider } from "@/lib/firebaseConfig";
-import { FaSignOutAlt } from "react-icons/fa"; // ✅ logout icon
+import { FaSignOutAlt, FaTrashAlt } from "react-icons/fa"; // ✅ logout + delete icons
 
 export default function SignUp() {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const [signInLoading, setSignInLoading] = useState(false);
+  const [actionLoading, setActionLoading] = useState(false);
   const [error, setError] = useState<string>("");
 
   useEffect(() => {
@@ -45,6 +47,30 @@ export default function SignUp() {
       console.log("✅ User signed out");
     } catch (error) {
       console.error("❌ Sign-out error:", error);
+    }
+  };
+
+  const handleDeleteAccount = async () => {
+    if (!user) return;
+    const confirmDelete = confirm(
+      "⚠️ Are you sure you want to permanently delete your account? This cannot be undone."
+    );
+    if (!confirmDelete) return;
+
+    setActionLoading(true);
+    setError("");
+    try {
+      await deleteUser(user);
+      console.log("✅ User account deleted");
+    } catch (error: any) {
+      console.error("❌ Delete account error:", error);
+      if (error.code === "auth/requires-recent-login") {
+        setError("Please sign in again before deleting your account.");
+      } else {
+        setError("Failed to delete account. Please try again.");
+      }
+    } finally {
+      setActionLoading(false);
     }
   };
 
@@ -123,13 +149,24 @@ export default function SignUp() {
                 </p>
               </div>
               {/* ✅ Sign Out button with icon */}
-              <button
-                onClick={handleSignOut}
-                className="flex items-center justify-center gap-2 px-6 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
-              >
-                <FaSignOutAlt className="text-lg" />
-                Sign Out
-              </button>
+              <div className="flex gap-3">
+                <button
+                  onClick={handleSignOut}
+                  disabled={actionLoading}
+                  className="flex items-center justify-center gap-2 px-6 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition disabled:opacity-50"
+                >
+                  <FaSignOutAlt className="text-lg" />
+                  Sign Out
+                </button>
+                <button
+                  onClick={handleDeleteAccount}
+                  disabled={actionLoading}
+                  className="flex items-center justify-center gap-2 px-6 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-800 transition disabled:opacity-50"
+                >
+                  <FaTrashAlt className="text-lg" />
+                  {actionLoading ? "Deleting..." : "Delete Account"}
+                </button>
+              </div>
             </div>
           </div>
         )}
