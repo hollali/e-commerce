@@ -7,7 +7,7 @@ export default function Logo({ onClick }: { onClick?: () => void }) {
   return (
     <Link href="/" onClick={onClick} className="flex items-center">
       <Image
-        src="/logo.png" // Place your logo file in /public/logo.png
+        src="/logo.png" //! Place your logo file in /public/logo.png
         alt="Anet Beads Logo"
         width={160}
         height={60}
