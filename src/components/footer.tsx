@@ -109,7 +109,7 @@ const Footer = () => {
             <div className="flex items-center">
               <FaSnapchatGhost size={20} />
               <a
-                href="https://www.snapchat.com/add/your-username"
+                href="https://www.snapchat.com/add/nadiasbeads"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="ml-2 text-sm sm:text-base"

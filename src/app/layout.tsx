@@ -6,7 +6,11 @@ import Footer from "@/components/footer";
 import CartProvider from "@/components/provider";
 import ShoppingCartModal from "@/components/shoppingCartModal";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  fallback: ["system-ui", "Arial", "sans-serif"],
+});
 
 export const metadata: Metadata = {
   title: "Anet's Beads",
