@@ -8,7 +8,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { Button } from "@/components/ui/button";
 import { useShoppingCart } from "use-shopping-cart";
 import Logo from "@/components/logo";
-import { FaShoppingCart } from "react-icons/fa";
 
 const links = [
   { name: "Home", href: "/" },
@@ -100,7 +99,7 @@ export default function Navbar() {
             onClick={() => handleCartClick()}
             className="flex flex-col gap-y-1.5 h-12 w-12 sm:h-20 sm:w-20 md:h-24 md:w-24 border-none rounded-none relative"
           >
-            <FaShoppingCart />
+            <ShoppingBagIcon />
             {cartCount > 0 && (
               <span className="absolute top-0 right-0 inline-flex items-center justify-center h-6 w-6 rounded-full bg-red-600 text-white text-xs">
                 {cartCount}
