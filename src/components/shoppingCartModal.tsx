@@ -176,7 +176,6 @@ export default function ShoppingCartModal() {
               )}
             </ul>
           </div>
-
           {/* ✅ Clear Cart button (only if cart has items) */}
           {cartCount > 0 && (
             <div className="flex justify-center mt-10 mb-3">
