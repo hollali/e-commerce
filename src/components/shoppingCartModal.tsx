@@ -163,7 +163,7 @@ export default function ShoppingCartModal() {
                             <button
                               type="button"
                               onClick={() => removeItem(entry.id)}
-                              className="font-medium text-blue-600 hover:text-blue-300"
+                              className="font-medium text-red-600 hover:text-red-300"
                             >
                               <FaTrash size={18} />
                             </button>
@@ -176,6 +176,7 @@ export default function ShoppingCartModal() {
               )}
             </ul>
           </div>
+
           {/* ✅ Clear Cart button (only if cart has items) */}
           {cartCount > 0 && (
             <div className="flex justify-center mt-10 mb-3">
@@ -187,12 +188,13 @@ export default function ShoppingCartModal() {
                     clearCart();
                   }
                 }}
-                className="flex items-center gap-2 bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700 transition"
+                className="flex items-center gap-2 bg-red-600 text-white px-5 py-2 rounded hover:bg-red-700 transition"
               >
                 <FaTrash size={18} />
               </button>
             </div>
           )}
+
           {/* Checkout Section */}
           {cartCount > 0 && (
             <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
