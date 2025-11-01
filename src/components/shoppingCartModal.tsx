@@ -188,7 +188,7 @@ export default function ShoppingCartModal() {
                     clearCart();
                   }
                 }}
-                className="flex items-center gap-2 bg-red-600 text-white px-5 py-2 rounded hover:bg-red-700 transition"
+                className="flex items-center gap-2 bg-red-600 text-white px-5 py-2 hover:bg-red-700 transition"
               >
                 <FaTrash size={18} />
               </button>
