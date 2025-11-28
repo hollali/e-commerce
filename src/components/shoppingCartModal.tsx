@@ -178,7 +178,7 @@ export default function ShoppingCartModal() {
           </div>
 
           {/* ✅ Clear Cart button (only if cart has items) */}
-          {cartCount > 0 && (
+          {/*{cartCount > 0 && (
             <div className="flex justify-center mt-10 mb-3">
               <button
                 onClick={() => {
@@ -193,7 +193,7 @@ export default function ShoppingCartModal() {
                 <FaTrash size={18} />
               </button>
             </div>
-          )}
+          )}*/}
 
           {/* Checkout Section */}
           {cartCount > 0 && (
