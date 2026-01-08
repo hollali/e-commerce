@@ -47,7 +47,7 @@ export default async function ProductPage({
               </h2>
             </div>
             <div className="mb-6 flex items-center gap-3 md:mb-10">
-              <Button className="rounded-full bg-blue-600 gap-x-2">
+              <Button className="rounded-full bg-blue-600 hover:bg-blue-400 gap-x-2">
                 <span className="text-sm">4.5</span>
                 <Star className="h-5 w-5" />
               </Button>
