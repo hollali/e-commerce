@@ -36,7 +36,7 @@ export default function Navbar() {
   }, [debouncedSearch, router]);
 
   return (
-    <header className="mb-8 border-b">
+    <header className="mb-16 border-b">
       <div className="flex items-center justify-between mx-auto max-w-7xl px-4 sm:px-6">
         {/* Mobile menu button */}
         <button

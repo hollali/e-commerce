@@ -33,7 +33,7 @@ export default async function SearchPage({ searchParams }: any) {
             className="relative flex h-24 w-24 md:h-32 md:w-32 items-center justify-center rounded-full overflow-hidden shadow-md group"
           >
             <Image
-              src="/maleitem.png" // ✅ replace with actual image path
+              src="/maleitem.png"
               alt="Men"
               fill
               className="object-cover group-hover:scale-110 transition-transform duration-300"
