@@ -62,12 +62,12 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
+        className={`fixed top-0 left-0 right-0 z-50 lg:z-auto transition-all duration-300 border-b ${
           scrolled ? "bg-white/95 backdrop-blur-md shadow-sm" : "bg-white"
         }`}
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-24">
+          <div className="flex items-center justify-between h-16 lg:h-24">
             {/* Left Section: Menu Button (Mobile) */}
             <div className="flex items-center lg:gap-6">
               {/* Mobile menu button */}
@@ -188,7 +188,7 @@ export default function Navbar() {
       </header>
 
       {/* Spacer to prevent content jump */}
-      <div className="h-24 mb-8" />
+      <div className="h-16 lg:h-24 mb-8" />
 
       {/* Mobile Sidebar Menu */}
       <div
@@ -212,7 +212,10 @@ export default function Navbar() {
           <nav className="flex-1 overflow-y-auto p-6">
             <ul className="space-y-2">
               {links.map((link) => (
-                <li key={link.href}>
+                <li
+                  key={link.href}
+                  className="border-b pb-2 lg:border-0 lg:pb-0"
+                >
                   <Link
                     href={link.href}
                     onClick={() => setIsOpen(false)}
