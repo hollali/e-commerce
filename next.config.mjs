@@ -2,7 +2,10 @@ import { withSentryConfig } from "@sentry/nextjs";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["cdn.sanity.io", "lh3.googleusercontent.com"],
+    domains: [
+      "cdn.sanity.io",
+      "lh3.googleusercontent.com"
+    ],
   },
   webpack: (config, { isServer }) => {
     if (!isServer) {
