@@ -62,7 +62,7 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 lg:z-auto transition-all duration-300 border-b ${
+        className={`fixed top-0 left-0 right-0 z-50 lg:z-30 transition-all duration-300 border-b ${
           scrolled ? "bg-white/95 backdrop-blur-md shadow-sm" : "bg-white"
         }`}
       >
@@ -132,7 +132,15 @@ export default function Navbar() {
               >
                 <SearchIcon className="text-gray-600" />
               </button>
-
+              {/* Sign Up Icon Button */}
+              <Link href="/sign-up" className="hidden lg:block">
+                <button
+                  className="p-2.5 hover:bg-gray-100 rounded-lg transition-colors"
+                  aria-label="Sign up"
+                >
+                  <PersonOutlineIcon className="text-gray-600" />
+                </button>
+              </Link>
               {/* Cart Button */}
               <button
                 onClick={handleCartClick}
@@ -146,16 +154,6 @@ export default function Navbar() {
                   </span>
                 )}
               </button>
-
-              {/* Sign Up Icon Button */}
-              <Link href="/sign-up" className="hidden lg:block">
-                <button
-                  className="p-2.5 hover:bg-gray-100 rounded-lg transition-colors"
-                  aria-label="Sign up"
-                >
-                  <PersonOutlineIcon className="text-gray-600" />
-                </button>
-              </Link>
             </div>
           </div>
 
@@ -212,10 +210,7 @@ export default function Navbar() {
           <nav className="flex-1 overflow-y-auto p-6">
             <ul className="space-y-2">
               {links.map((link) => (
-                <li
-                  key={link.href}
-                  className="border-b pb-2 lg:border-0 lg:pb-0"
-                >
+                <li key={link.href}>
                   <Link
                     href={link.href}
                     onClick={() => setIsOpen(false)}
