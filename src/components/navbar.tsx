@@ -28,18 +28,8 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [search, setSearch] = useState("");
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
 
   const debouncedSearch = useDebounce(search, 400);
-
-  // Handle scroll effect
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   // Navigate when user stops typing
   useEffect(() => {
@@ -61,11 +51,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 lg:z-30 transition-all duration-300 border-b ${
-          scrolled ? "bg-white/95 backdrop-blur-md shadow-sm" : "bg-white"
-        }`}
-      >
+      <header className="fixed top-0 left-0 right-0 z-50 lg:static border-b bg-white mb-8">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-24">
             {/* Left Section: Menu Button (Mobile) */}
@@ -185,8 +171,8 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Spacer to prevent content jump */}
-      <div className="h-16 lg:h-24 mb-8" />
+      {/* Spacer to prevent content jump on mobile only */}
+      <div className="h-16 lg:h-0" />
 
       {/* Mobile Sidebar Menu */}
       <div
