@@ -1,4 +1,3 @@
-// lib/searchProducts.ts
 import { client } from "@/lib/sanity";
 
 export async function searchProducts({
@@ -18,7 +17,7 @@ export async function searchProducts({
       "products": *[
         _type == "product"
         && ($q == null || name match $q || description match $q)
-        && ($category == null || category->slug.current == $category)
+        && ($category == null || category->name == $category)
         && ($min == null || price >= $min)
         && ($max == null || price <= $max)
       ] | order(name asc) {
@@ -27,8 +26,7 @@ export async function searchProducts({
         price,
         images,
         "slug": slug.current,
-        "category": category->name,
-        "categorySlug": category->slug.current
+        "category": category->name
       },
 
       "categories": *[
@@ -36,8 +34,7 @@ export async function searchProducts({
         && ($q == null || name match $q)
       ] | order(name asc) {
         _id,
-        name,
-        "slug": slug.current
+        name
       }
     }
     `,

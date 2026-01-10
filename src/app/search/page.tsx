@@ -27,8 +27,8 @@ export default async function SearchPage({ searchParams }: any) {
             {categories.map((cat: any) => (
               <Link
                 key={cat._id}
-                href={`/category/${cat.slug}`}
-                className="px-4 py-2 rounded-full bg-gray-100 hover:bg-gray-200 transition"
+                href={`/search?cat=${encodeURIComponent(cat.name)}`}
+                className="px-4 py-2 rounded-full bg-gray-100 hover:bg-gray-200"
               >
                 {cat.name}
               </Link>
