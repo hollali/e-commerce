@@ -27,7 +27,7 @@ export default function HeroText() {
         <span className="inline-block bg-gradient-to-r from-black via-gray-800 to-black bg-clip-text text-transparent animate-gradient">
           Top Fashion
         </span>{" "}
-        <span className="text-gray-700">for an</span>{" "}
+        <span className="text-gray-700">at an</span>{" "}
         <span className="inline-block bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
           Affordable Price!
         </span>
