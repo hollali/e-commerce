@@ -38,6 +38,7 @@ A full-stack e-commerce solution built with modern web technologies, featuring s
 
 - Beautiful, accessible components with **shadcn/ui**
 - Responsive design with **Tailwind CSS**
+- **GSAP** for professional animations and smooth interactions
 - Dark/Light mode support
 - Smooth animations and interactions
 
@@ -61,6 +62,10 @@ A full-stack e-commerce solution built with modern web technologies, featuring s
 
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-000000?style=for-the-badge&logo=shadcnui&logoColor=white)
+
+### Animation
+
+![GSAP](https://img.shields.io/badge/GSAP-88CE02?style=for-the-badge&logo=greensock&logoColor=white)
 
 ### Backend & Authentication
 
@@ -119,7 +124,15 @@ A full-stack e-commerce solution built with modern web technologies, featuring s
    yarn install
    ```
 
-3. **Install Sentry**
+3. **Install GSAP**
+
+   ```bash
+   npm install gsap
+   # or
+   yarn add gsap
+   ```
+
+4. **Install Sentry**
 
    ```bash
    npm install @sentry/nextjs @sentry/tracing
@@ -127,7 +140,7 @@ A full-stack e-commerce solution built with modern web technologies, featuring s
    yarn add @sentry/nextjs @sentry/tracing
    ```
 
-4. **Environment Variables**
+5. **Environment Variables**
    Create a `.env.local` file in the root directory:
 
    ```env
@@ -169,7 +182,7 @@ A full-stack e-commerce solution built with modern web technologies, featuring s
    NEXTAUTH_SECRET=your_nextauth_secret
    ```
 
-5. **Setup MongoDB Atlas**
+6. **Setup MongoDB Atlas**
 
    ```bash
    # Install MongoDB driver
@@ -180,7 +193,7 @@ A full-stack e-commerce solution built with modern web technologies, featuring s
    # Create database user with appropriate permissions
    ```
 
-6. **Setup Sanity Studio**
+7. **Setup Sanity Studio**
 
    ```bash
    # Initialize Sanity in your project
@@ -192,7 +205,7 @@ A full-stack e-commerce solution built with modern web technologies, featuring s
    npm run dev
    ```
 
-7. **Setup Sentry**
+8. **Setup Sentry**
 
    ```bash
    # Initialize Sentry configuration
@@ -202,7 +215,7 @@ A full-stack e-commerce solution built with modern web technologies, featuring s
    # and sentry.edge.config.js files
    ```
 
-8. **Run the development server**
+9. **Run the development server**
 
    ```bash
    npm run dev
@@ -297,6 +310,17 @@ A full-stack e-commerce solution built with modern web technologies, featuring s
 5. Set up release tracking for deployment monitoring
 6. Configure alerts and notifications for critical errors
 
+### GSAP Setup
+
+GSAP is included in the project for smooth, professional animations. Key features used:
+
+- Timeline animations for coordinated sequences
+- ScrollTrigger for scroll-based animations (optional)
+- Power ease functions for natural motion
+- Context API for proper cleanup in React
+
+No additional configuration needed - GSAP works out of the box!
+
 ## 🚀 Deployment
 
 ### Deploy to Netlify
@@ -373,6 +397,14 @@ npx @sentry/cli releases finalize $RELEASE_VERSION
 - [x] Cart Persistence
 - [x] Analytics Data Storage
 
+### Animation Features
+
+- [x] GSAP Timeline Animations
+- [x] Smooth Page Transitions
+- [x] Interactive Hover Effects
+- [x] Scroll-based Animations
+- [x] Performance-optimized Animations
+
 ### Monitoring & Error Tracking
 
 - [x] Sentry Error Tracking
@@ -413,6 +445,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Next.js](https://nextjs.org/) for the amazing React framework
 - [Tailwind CSS](https://tailwindcss.com/) for utility-first CSS
 - [shadcn/ui](https://ui.shadcn.com/) for beautiful components
+- [GSAP](https://greensock.com/gsap/) for professional-grade animations
 - [Firebase](https://firebase.google.com/) for authentication and database
 - [MongoDB](https://www.mongodb.com/) for flexible document database
 - [MongoDB Atlas](https://cloud.mongodb.com/) for cloud database hosting
