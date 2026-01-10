@@ -104,13 +104,13 @@ export default function Navbar() {
             <div className="flex items-center gap-2">
               {/* Desktop Search (always visible) */}
               <div className="hidden lg:flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 focus-within:ring-2 focus-within:ring-blue-500/20">
-                <SearchIcon className="text-gray-400" fontSize="small" />
                 <input
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Search products..."
                   className="bg-transparent outline-none text-sm w-56 text-gray-900 placeholder:text-gray-500"
                 />
+                <SearchIcon className="text-gray-400" fontSize="small" />
                 {search && (
                   <button
                     onClick={() => setSearch("")}
