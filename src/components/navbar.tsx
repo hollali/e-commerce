@@ -31,6 +31,11 @@ export default function Navbar() {
 
   const debouncedSearch = useDebounce(search, 400);
 
+  const closeSearch = () => {
+    setSearch("");
+    setIsSearchOpen(false);
+  };
+
   // Navigate when user stops typing
   useEffect(() => {
     if (!debouncedSearch.trim()) return;
@@ -54,9 +59,8 @@ export default function Navbar() {
       <header className="fixed top-0 left-0 right-0 z-50 lg:static border-b bg-white mb-8">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-24">
-            {/* Left Section: Menu Button (Mobile) */}
+            {/* Left Section */}
             <div className="flex items-center lg:gap-6">
-              {/* Mobile menu button */}
               <button
                 className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
                 onClick={() => setIsOpen(!isOpen)}
@@ -65,20 +69,17 @@ export default function Navbar() {
                 {isOpen ? <CloseIcon /> : <MenuIcon />}
               </button>
 
-              {/* Logo - Desktop only */}
               <div className="hidden lg:block">
                 <Logo />
               </div>
             </div>
 
-            {/* Center: Logo (Mobile) / Navigation (Desktop) */}
+            {/* Center */}
             <div className="absolute left-1/2 -translate-x-1/2 lg:static lg:translate-x-0">
-              {/* Mobile Logo */}
               <div className="lg:hidden">
                 <Logo />
               </div>
 
-              {/* Desktop Navigation */}
               <nav className="hidden lg:flex items-center gap-1">
                 {links.map((link) => (
                   <Link
@@ -99,26 +100,38 @@ export default function Navbar() {
               </nav>
             </div>
 
-            {/* Right Section: Search + Cart + Sign Up */}
+            {/* Right Section */}
             <div className="flex items-center gap-2">
-              {/* Desktop Search Toggle */}
-              <button
-                onClick={() => setIsSearchOpen(!isSearchOpen)}
-                className="hidden lg:flex p-2.5 hover:bg-gray-100 rounded-lg transition-colors"
-                aria-label="Search"
-              >
-                <SearchIcon className="text-gray-600" />
-              </button>
+              {/* Desktop Search (always visible) */}
+              <div className="hidden lg:flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 focus-within:ring-2 focus-within:ring-blue-500/20">
+                <SearchIcon className="text-gray-400" fontSize="small" />
+                <input
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  placeholder="Search products..."
+                  className="bg-transparent outline-none text-sm w-56 text-gray-900 placeholder:text-gray-500"
+                />
+                {search && (
+                  <button
+                    onClick={() => setSearch("")}
+                    className="text-gray-400 hover:text-gray-600"
+                    aria-label="Clear search"
+                  >
+                    <CloseIcon fontSize="small" />
+                  </button>
+                )}
+              </div>
 
-              {/* Mobile Search Toggle */}
+              {/* Mobile Search Button */}
               <button
-                onClick={() => setIsSearchOpen(!isSearchOpen)}
+                onClick={() => setIsSearchOpen(true)}
                 className="lg:hidden p-2.5 hover:bg-gray-100 rounded-lg transition-colors"
                 aria-label="Search"
               >
                 <SearchIcon className="text-gray-600" />
               </button>
-              {/* Sign Up Icon Button */}
+
+              {/* Sign Up */}
               <Link href="/sign-up" className="hidden lg:block">
                 <button
                   className="p-2.5 hover:bg-gray-100 rounded-lg transition-colors"
@@ -127,7 +140,8 @@ export default function Navbar() {
                   <PersonOutlineIcon className="text-gray-600" />
                 </button>
               </Link>
-              {/* Cart Button */}
+
+              {/* Cart */}
               <button
                 onClick={handleCartClick}
                 className="relative p-2.5 hover:bg-gray-100 rounded-lg transition-colors"
@@ -143,20 +157,20 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Expandable Search Bar */}
+          {/* Mobile Expandable Search */}
           <div
-            className={`overflow-hidden transition-all duration-300 ${
+            className={`lg:hidden overflow-hidden transition-all duration-300 ${
               isSearchOpen ? "max-h-20 pb-4" : "max-h-0"
             }`}
           >
-            <div className="flex items-center gap-3 bg-gray-50 rounded-lg px-4 py-3 border border-gray-200 focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-500/20 transition-all">
+            <div className="flex items-center gap-3 bg-gray-50 rounded-lg px-4 py-3 border border-gray-200 focus-within:ring-2 focus-within:ring-blue-500/20">
               <SearchIcon className="text-gray-400" />
               <input
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search for products..."
                 className="flex-1 bg-transparent outline-none text-gray-900 placeholder:text-gray-500"
-                autoFocus={isSearchOpen}
+                autoFocus
               />
               {search && (
                 <button
@@ -166,22 +180,26 @@ export default function Navbar() {
                   <CloseIcon fontSize="small" />
                 </button>
               )}
+              <button
+                onClick={closeSearch}
+                className="text-gray-400 hover:text-gray-600"
+              >
+                <CloseIcon />
+              </button>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Spacer to prevent content jump on mobile only */}
       <div className="h-16 lg:h-0" />
 
-      {/* Mobile Sidebar Menu */}
+      {/* Mobile Sidebar */}
       <div
         className={`fixed top-0 left-0 h-full w-80 bg-white shadow-2xl transform transition-transform duration-300 z-50 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         <div className="flex flex-col h-full">
-          {/* Mobile Menu Header */}
           <div className="flex items-center justify-between p-6 border-b">
             <Logo />
             <button
@@ -192,7 +210,6 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Mobile Navigation Links */}
           <nav className="flex-1 overflow-y-auto p-6">
             <ul className="space-y-2">
               {links.map((link) => (
@@ -213,8 +230,7 @@ export default function Navbar() {
             </ul>
           </nav>
 
-          {/* Mobile Menu Footer */}
-          <div className="p-6 border-t space-y-3">
+          <div className="p-6 border-t">
             <Link href="/sign-up" onClick={() => setIsOpen(false)}>
               <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-sm">
                 Sign Up
@@ -224,10 +240,9 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Overlay */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 transition-opacity"
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
           onClick={() => setIsOpen(false)}
         />
       )}

@@ -3,9 +3,11 @@ import { searchProducts } from "@/lib/searchProducts";
 import Link from "next/link";
 import Image from "next/image";
 import { urlFor } from "@/lib/sanity";
+import { FaHeart, FaShoppingCart, FaStar } from "react-icons/fa";
 
 export default async function SearchPage({ searchParams }: any) {
   const cedisSign = "\u20B5";
+
   const { products, categories } = await searchProducts({
     q: searchParams.q,
     category: searchParams.cat,
@@ -42,36 +44,68 @@ export default async function SearchPage({ searchParams }: any) {
         <div>
           <h2 className="text-lg font-semibold mb-4">Products</h2>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-            {products.map((p: any) => (
-              <Link
-                key={p._id}
-                href={`/product/${p.slug}`}
-                className="group border rounded-lg overflow-hidden hover:shadow-lg transition"
-              >
-                {/* Product Image */}
-                <div className="relative aspect-square bg-gray-100">
-                  {p.images?.[0] && (
-                    <Image
-                      src={urlFor(p.images[0]).width(500).height(500).url()}
-                      alt={p.name}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  )}
-                </div>
+          {/* 🔥 SAME GRID + CARD DESIGN AS CATEGORY PAGE */}
+          <div className="mt-6 grid grid-cols-2 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+            {products.map((product: any) => (
+              <div key={product._id} className="group relative">
+                <Link href={`/product/${product.slug}`}>
+                  <div className="aspect-square w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-80">
+                    {product.images?.[0] && (
+                      <Image
+                        src={urlFor(product.images[0])
+                          .width(500)
+                          .height(500)
+                          .url()}
+                        alt={product.name}
+                        width={300}
+                        height={300}
+                        className="w-full h-full object-cover object-center"
+                      />
+                    )}
+                  </div>
+                </Link>
 
-                {/* Product Info */}
-                <div className="p-4">
-                  <h3 className="font-medium group-hover:blue-400 mb-2 line-clamp-1">
-                    {p.name}
-                  </h3>
-                  <p className="text-blue-4600">
-                    {cedisSign}
-                    {p.price}
-                  </p>
+                <div className="mt-4 flex justify-between">
+                  <div>
+                    <h6 className="text-sm text-blue-600 font-semibold">
+                      <Link
+                        href={`/product/${product.slug}`}
+                        className="line-clamp-1"
+                      >
+                        {product.name}
+                      </Link>
+                    </h6>
+
+                    {/* Category name if available */}
+                    {product.category && (
+                      <p className="mt-1 text-sm text-gray-500">
+                        {product.category}
+                      </p>
+                    )}
+
+                    {/* ⭐ Rating Stars */}
+                    <div className="flex items-center space-x-1 mt-1 text-gray-300">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <FaStar key={i} />
+                      ))}
+                    </div>
+
+                    <p className="text-sm font-medium text-gray-900 mt-1">
+                      {cedisSign} {product.price}
+                    </p>
+                  </div>
+
+                  {/* Mobile hover actions */}
+                  <div className="absolute top-4 right-4 flex flex-col space-y-2 lg:hidden group-hover:flex">
+                    <button className="p-2 rounded-full bg-white hover:bg-gray-100">
+                      <FaHeart className="text-gray-500" />
+                    </button>
+                    <button className="p-2 rounded-full bg-white hover:bg-gray-100">
+                      <FaShoppingCart className="text-gray-500" />
+                    </button>
+                  </div>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </div>
@@ -81,7 +115,7 @@ export default async function SearchPage({ searchParams }: any) {
         )
       )}
 
-      {/* ================= QUICK CATEGORY LINKS (OPTIONAL) ================= */}
+      {/* ================= QUICK CATEGORY LINKS ================= */}
       <div className="flex flex-col items-center justify-center gap-8 md:flex-row mt-16">
         <div className="flex gap-6 flex-wrap justify-center">
           <Link
