@@ -79,16 +79,15 @@ export default function SignUp() {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-screen">
+      <div className="flex justify-center items-center min-h-screen bg-gray-50 dark:bg-gray-900">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
       </div>
     );
   }
 
   return (
-    <div className="flex justify-center items-center min-h-screen px-4 bg-gray-50">
-      {/* ✅ Card made larger on big screens */}
-      <div className="w-full max-w-md sm:max-w-lg lg:max-w-xl p-8 bg-white shadow-lg rounded-2xl text-center">
+    <div className="flex justify-center items-center min-h-screen px-4 bg-gray-50 dark:bg-gray-900">
+      <div className="w-full max-w-md sm:max-w-lg lg:max-w-xl p-8 bg-white dark:bg-gray-800 shadow-lg rounded-2xl text-center">
         <div className="mb-6">
           <Image
             src="/nadia.jpeg"
@@ -101,21 +100,23 @@ export default function SignUp() {
         </div>
 
         {error && (
-          <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg">
+          <div className="mb-4 p-3 bg-red-100 dark:bg-red-200 border border-red-400 dark:border-red-500 text-red-700 dark:text-red-900 rounded-lg">
             {error}
           </div>
         )}
 
         {!user ? (
           <>
-            <h2 className="text-2xl font-bold mb-6 text-gray-800">Welcome!</h2>
+            <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100">
+              Welcome!
+            </h2>
             <button
               onClick={handleGoogleSignIn}
               disabled={signInLoading}
-              className="w-full flex items-center justify-center px-4 py-3 rounded-lg border border-gray-300 hover:bg-gray-100 transition disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full flex items-center justify-center px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {signInLoading ? (
-                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-gray-600 mr-2"></div>
+                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-gray-600 mr-2 dark:border-gray-300"></div>
               ) : (
                 <Image
                   src="/google.png"
@@ -125,14 +126,16 @@ export default function SignUp() {
                   className="mr-2"
                 />
               )}
-              <span className="text-gray-700 font-medium">
+              <span className="text-gray-700 dark:text-gray-100 font-medium">
                 {signInLoading ? "Signing in..." : "Continue with Google"}
               </span>
             </button>
           </>
         ) : (
           <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-gray-800">Welcome back!</h2>
+            <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100">
+              Welcome back!
+            </h2>
             <div className="flex flex-col items-center space-y-4">
               <Image
                 src={user.photoURL || "/model.jpeg"}
@@ -141,7 +144,7 @@ export default function SignUp() {
                 height={90}
                 className="rounded-full border-4 border-white shadow-lg"
               />
-              <div className="text-left space-y-1">
+              <div className="text-left space-y-1 text-gray-700 dark:text-gray-200">
                 <p>
                   <strong>Name:</strong> {user.displayName}
                 </p>
@@ -154,12 +157,11 @@ export default function SignUp() {
               </div>
             </div>
 
-            {/* ✅ Responsive buttons */}
             <div className="flex flex-col sm:flex-row gap-3 w-full">
               <button
                 onClick={handleSignOut}
                 disabled={actionLoading}
-                className="flex items-center justify-center gap-2 w-full sm:flex-1 px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-800 transition disabled:opacity-50"
+                className="flex items-center justify-center gap-2 w-full sm:flex-1 px-6 py-2 bg-blue-500 dark:bg-blue-600 text-white rounded-lg hover:bg-blue-800 dark:hover:bg-blue-700 transition disabled:opacity-50"
               >
                 <FaSignOutAlt className="text-lg" />
                 Sign Out
@@ -167,7 +169,7 @@ export default function SignUp() {
               <button
                 onClick={handleDeleteAccount}
                 disabled={actionLoading}
-                className="flex items-center justify-center gap-2 w-full sm:flex-1 px-6 py-2 bg-red-500 text-white rounded-lg hover:bg-red-800 transition disabled:opacity-50"
+                className="flex items-center justify-center gap-2 w-full sm:flex-1 px-6 py-2 bg-red-500 dark:bg-red-600 text-white rounded-lg hover:bg-red-800 dark:hover:bg-red-700 transition disabled:opacity-50"
               >
                 <FaTrashAlt className="text-lg" />
                 {actionLoading ? "Deleting..." : "Delete Account"}
