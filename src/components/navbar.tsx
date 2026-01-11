@@ -86,10 +86,10 @@ export default function Navbar() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`relative px-4 py-2 text-sm font-extrabold  rounded-lg transition-colors ${
+                    className={`relative px-4 py-2 text-sm font-extrabold rounded-lg transition-colors ${
                       pathname === link.href
-                        ? "text-blue-600"
-                        : "text-gray-700 dark:text-gray-200 hover:text-blue-600 hover:bg-gray-50 dark:bg-gradient-to-br dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:bg-clip-text dark:text-transparent"
+                        ? "text-blue-600 dark:bg-gradient-to-br dark:from-green-600 dark:via-teal-600 dark:to-cyan-600 dark:text-white"
+                        : "text-gray-700 dark:bg-gradient-to-br dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:bg-clip-text dark:text-transparent hover:text-blue-600 hover:bg-gray-50 dark:hover:bg-gradient-to-br dark:hover:from-green-600 dark:hover:via-teal-600 dark:hover:to-cyan-600 dark:hover:text-white"
                     }`}
                   >
                     {link.name}
