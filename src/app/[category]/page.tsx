@@ -29,10 +29,10 @@ export default async function CategoryPage({
   const cedisSign = "\u20B5";
 
   return (
-    <div className="bg-white">
+    <div className="bg-background ">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 lg:max-w-7xl lg:px-8">
         <div className="flex justify-center items-center h-full">
-          <h2 className="text-2xl font-bold tracking-tight text-gray-900">
+          <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
             {params.category}
           </h2>
         </div>
@@ -65,7 +65,7 @@ export default async function CategoryPage({
                   </p>
 
                   {/* ⭐ Rating Stars */}
-                  <div className="flex items-center space-x-1 mt-1 text-gray-300">
+                  <div className="flex items-center space-x-1 mt-1 text-gray-300 dark:text-yellow-400">
                     {Array.from({ length: 5 }).map((_, i) => (
                       <FaStar key={i} />
                     ))}

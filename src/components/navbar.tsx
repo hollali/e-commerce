@@ -65,7 +65,7 @@ export default function Navbar() {
             {/* Left: Menu + Logo */}
             <div className="flex items-center gap-4 lg:gap-6">
               <button
-                className="lg:hidden p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors"
+                className="lg:hidden p-2 hover:bg-gray-200 dark:hover:bg-gradient-to-br dark:hover:from-purple-600 dark:hover:via-pink-600 dark:hover:to-blue-600 rounded-lg transition-colors"
                 onClick={() => setIsOpen(!isOpen)}
                 aria-label="Toggle menu"
               >
@@ -86,10 +86,10 @@ export default function Navbar() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+                    className={`relative px-4 py-2 text-sm font-extrabold  rounded-lg transition-colors ${
                       pathname === link.href
                         ? "text-blue-600"
-                        : "text-gray-700 dark:text-gray-200 hover:text-blue-600 hover:bg-gray-50 dark:hover:bg-gray-800"
+                        : "text-gray-700 dark:text-gray-200 hover:text-blue-600 hover:bg-gray-50 dark:bg-gradient-to-br dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:bg-clip-text dark:text-transparent"
                     }`}
                   >
                     {link.name}
@@ -223,7 +223,7 @@ export default function Navbar() {
                     className={`block px-4 py-3 rounded-lg font-medium transition-colors ${
                       pathname === link.href
                         ? "bg-blue-50 text-blue-600 dark:bg-gray-800 dark:text-blue-400"
-                        : "text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800"
+                        : "text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-blue-600 dark:bg-gradient-to-br dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:bg-clip-text dark:text-transparent"
                     }`}
                   >
                     {link.name}
@@ -235,7 +235,7 @@ export default function Navbar() {
 
           <div className="p-6 border-t border-gray-200 dark:border-gray-700">
             <Link href="/sign-up" onClick={() => setIsOpen(false)}>
-              <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-sm">
+              <Button className="w-full bg-blue-600 hover:bg-blue-700 dark:bg-gradient-to-br dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:hover:from-purple-500 dark:hover:via-pink-500 dark:hover:to-blue-500 text-white rounded-lg shadow-sm">
                 Sign Up
               </Button>
             </Link>

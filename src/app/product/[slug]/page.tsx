@@ -33,7 +33,7 @@ export default async function ProductPage({
   const cedisSign = "\u20B5";
 
   return (
-    <div className="bg-background dark:bg-gray-900 dark:text-gray-100">
+    <div className="bg-background text-gray-900 dark:text-gray-100">
       <div className="mx-auto max-w-screen-xl px-4 md:px-8">
         <div className="grid gap-8 md:grid-cols-2">
           <ImageGallery images={data.images} />
@@ -43,13 +43,12 @@ export default async function ProductPage({
               <span className="mb-0.5 inline-block text-gray-500 dark:text-gray-400">
                 {data.categoryName}
               </span>
-              <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 lg:text-3xl">
+              <h2 className="text-2xl font-bold text-gray-800 dark:dark:bg-gradient-to-br dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:bg-clip-text dark:text-transparent lg:text-3xl">
                 {data.name}
               </h2>
             </div>
-
             <div className="mb-6 flex items-center gap-3 md:mb-10">
-              <Button className="rounded-full bg-blue-600 hover:bg-blue-400 gap-x-2">
+              <Button className="rounded-full bg-blue-600 hover:bg-blue-400 dark:bg-gradient-to-br dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:hover:from-purple-500 dark:hover:via-pink-500 dark:hover:to-blue-500 gap-x-2">
                 <span className="text-sm text-white dark:text-gray-100">
                   4.5
                 </span>

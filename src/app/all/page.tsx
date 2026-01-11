@@ -28,7 +28,7 @@ export default async function AllProducts() {
     <div className="bg-background text-gray-900 dark:text-gray-100">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <div className="flex justify-center">
-          <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
+          <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:bg-gradient-to-br dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:bg-clip-text dark:text-transparent">
             Our Products
           </h2>
         </div>
@@ -50,7 +50,7 @@ export default async function AllProducts() {
 
               <div className="mt-4 flex justify-between">
                 <div>
-                  <h3 className="text-sm font-semibold text-blue-600 dark:text-blue-400">
+                  <h3 className="text-sm font-semibold text-blue-600 dark:bg-gradient-to-br dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:bg-clip-text dark:text-transparent">
                     <Link
                       href={`/product/${product.slug}`}
                       className="line-clamp-1"

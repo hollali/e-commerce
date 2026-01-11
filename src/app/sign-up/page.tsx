@@ -79,14 +79,14 @@ export default function SignUp() {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-screen bg-background">
+      <div className="flex justify-center items-center min-h-screen bg-gray-50 dark:bg-gray-900">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
       </div>
     );
   }
 
   return (
-    <div className="flex justify-center items-center min-h-screen px-4 bg-gray-50 dark:bg-gray-900">
+    <div className="flex justify-center items-center min-h-screen px-4 bg-background">
       <div className="w-full max-w-md sm:max-w-lg lg:max-w-xl p-8 bg-white dark:bg-gray-800 shadow-lg rounded-2xl text-center">
         <div className="mb-6">
           <Image

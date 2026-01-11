@@ -48,14 +48,10 @@ export default function HeroText() {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
-        {/*<button className="group relative px-8 py-3 bg-black text-white rounded-full font-medium overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl">
+        <button className="group relative px-6 py-3 bg-black text-white  dark:bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full font-medium overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl">
           <span className="relative z-10">Shop Now</span>
           <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </button>
-
-        <button className="px-8 py-3 border-2 border-gray-300 text-gray-700 rounded-full font-medium transition-all duration-300 hover:border-black hover:text-black hover:scale-105">
-          View Collection
-        </button>*/}
       </div>
 
       <style jsx>{`
