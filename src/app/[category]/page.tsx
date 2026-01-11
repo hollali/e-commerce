@@ -70,7 +70,7 @@ export default async function CategoryPage({
                       <FaStar key={i} />
                     ))}
                   </div>
-                  <p className="text-sm font-medium text-gray-900 mt-1">
+                  <p className="text-sm font-medium text-gray-900 dark:text-gray-100 mt-1">
                     {cedisSign} {product.price}
                   </p>
                 </div>
