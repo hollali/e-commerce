@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import CartProvider from "@/components/provider";
 import ShoppingCartModal from "@/components/shoppingCartModal";
+
+import { ThemeProvider } from "next-themes";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -17,9 +20,9 @@ export const metadata: Metadata = {
   description:
     "Discover the latest trends and timeless styles at Nadia's Collections",
   icons: {
-    icon: "/favicon.ico", // regular favicon
+    icon: "/favicon.ico",
     shortcut: "/favicon.ico",
-    apple: "/apple-icon.png", // for iOS devices
+    apple: "/apple-icon.png",
   },
   openGraph: {
     title: "Anet's Beads",
@@ -48,14 +51,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <CartProvider>
-          <Navbar />
-          <ShoppingCartModal />
-          {children}
-        </CartProvider>
-        <Footer />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+        >
+          <CartProvider>
+            <Navbar />
+            <ShoppingCartModal />
+            {children}
+            <Footer />
+          </CartProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
