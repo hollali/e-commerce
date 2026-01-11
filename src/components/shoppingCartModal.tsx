@@ -32,11 +32,9 @@ export default function ShoppingCartModal() {
   const cedisSign = "\u20B5";
   const router = useRouter();
 
-  // Use Firebase email if logged in
   const userEmail = user?.email || "";
   const userName = user?.displayName || "";
 
-  // Paystack config
   const paystackConfig = {
     reference: new Date().getTime().toString(),
     email: userEmail,
@@ -59,7 +57,6 @@ export default function ShoppingCartModal() {
     console.log("✅ Payment Success:", reference);
     handleCartClick();
     clearCart();
-    // TODO: Save order to DB
   };
 
   const handlePaystackClose = () => {
@@ -68,18 +65,19 @@ export default function ShoppingCartModal() {
 
   if (loading) return null;
 
-  // If not logged in → prompt login
   if (!userEmail) {
     return (
       <Sheet open={shouldDisplayCart} onOpenChange={() => handleCartClick()}>
-        <SheetContent className="sm:max-w-lg w-[100vw]">
+        <SheetContent className="sm:max-w-lg w-[100vw] dark:bg-gray-900 dark:text-gray-100">
           <SheetHeader>
-            <SheetTitle className="flex items-center justify-center h-full text-3xl text-black border-b pb-2 border-gray-200 font-bold">
+            <SheetTitle className="flex items-center justify-center h-full text-3xl text-black dark:text-gray-100 border-b pb-2 border-gray-200 dark:border-gray-700 font-bold">
               CART
             </SheetTitle>
           </SheetHeader>
           <div className="h-full flex flex-col items-center justify-center">
-            <p className="text-gray-600 mb-4">Please login to checkout</p>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
+              Please login to checkout
+            </p>
             <Link href="/sign-up">
               <button className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">
                 Login
@@ -93,20 +91,19 @@ export default function ShoppingCartModal() {
 
   return (
     <Sheet open={shouldDisplayCart} onOpenChange={() => handleCartClick()}>
-      <SheetContent className="sm:max-w-lg w-[100vw]">
+      <SheetContent className="sm:max-w-lg w-[100vw] dark:bg-gray-900 dark:text-gray-100">
         <SheetHeader>
-          <SheetTitle className="flex items-center justify-center w-full text-3xl text-black border-b pb-2 border-gray-200 font-bold">
+          <SheetTitle className="flex items-center justify-center w-full text-3xl text-black dark:text-gray-100 border-b pb-2 border-gray-200 dark:border-gray-700 font-bold">
             <span>CART</span>
           </SheetTitle>
         </SheetHeader>
 
         <div className="h-full flex flex-col justify-between">
-          {/* Cart Items */}
           <div className="mt-8 flex-1 overflow-y-auto">
-            <ul className="-my-6 divide-y divide-gray-200">
+            <ul className="-my-6 divide-y divide-gray-200 dark:divide-gray-700">
               {cartCount === 0 ? (
                 <div className="flex flex-col items-center justify-center mt-36">
-                  <h1 className="text-2xl font-semibold">
+                  <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
                     Your cart is empty !!
                   </h1>
                   <Link href="/" onClick={() => handleCartClick()}>
@@ -119,7 +116,7 @@ export default function ShoppingCartModal() {
                 <>
                   {Object.values(cartDetails ?? {}).map((entry) => (
                     <li key={entry.id} className="flex py-6">
-                      <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                      <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200 dark:border-gray-700">
                         <Image
                           src={entry.image as string}
                           alt="Product image"
@@ -130,19 +127,19 @@ export default function ShoppingCartModal() {
                       </div>
                       <div className="ml-4 flex-1 flex-col">
                         <div>
-                          <div className="flex justify-between text-base font-medium text-gray-900">
+                          <div className="flex justify-between text-base font-medium text-gray-900 dark:text-gray-100">
                             <h3 className="line-clamp-1">{entry.name}</h3>
                             <p className="ml-4">
                               {cedisSign}
                               {entry.price}
                             </p>
                           </div>
-                          <p className="mt-1 text-sm text-gray-500 line-clamp-2">
+                          <p className="mt-1 text-sm text-gray-500 dark:text-gray-400 line-clamp-2">
                             {entry.description}
                           </p>
                         </div>
                         <div className="flex flex-1 items-end justify-between text-sm">
-                          <p className="text-gray-500 font-bold">
+                          <p className="text-gray-500 dark:text-gray-300 font-bold">
                             Quantity: {entry.quantity}
                           </p>
                           <div className="flex space-x-2">
@@ -177,43 +174,20 @@ export default function ShoppingCartModal() {
             </ul>
           </div>
 
-          {/* ✅ Clear Cart button (only if cart has items) */}
-          {/*{cartCount > 0 && (
-            <div className="flex justify-center mt-10 mb-3">
-              <button
-                onClick={() => {
-                  if (
-                    window.confirm("Are you sure you want to clear your cart?")
-                  ) {
-                    clearCart();
-                  }
-                }}
-                className="flex items-center gap-2 bg-red-600 text-white px-5 py-2 hover:bg-red-700 transition"
-              >
-                <FaTrash size={18} />
-              </button>
-            </div>
-          )}*/}
-
-          {/* Checkout Section */}
           {cartCount > 0 && (
-            <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
-              <div className="flex justify-between text-base font-medium text-gray-900">
+            <div className="border-t border-gray-200 dark:border-gray-700 px-4 py-6 sm:px-6">
+              <div className="flex justify-between text-base font-medium text-gray-900 dark:text-gray-100">
                 <p>Subtotal:</p>
-                <p className="text-blue-600">
+                <p className="text-blue-600 dark:text-blue-400">
                   {cedisSign}
                   {totalPrice}
                 </p>
               </div>
-              <p className="mt-0.5 text-sm text-gray-500">
+              <p className="mt-0.5 text-sm text-gray-500 dark:text-gray-400">
                 Delivery fee is not added at checkout
               </p>
               <div className="mt-6 space-y-3">
-                <div
-                  onClick={() => {
-                    handleCartClick();
-                  }}
-                >
+                <div onClick={() => handleCartClick()}>
                   <PaystackButton
                     {...paystackConfig}
                     text="Checkout"
@@ -223,12 +197,12 @@ export default function ShoppingCartModal() {
                   />
                 </div>
               </div>
-              <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
+              <div className="mt-6 flex justify-center text-center text-sm text-gray-500 dark:text-gray-400">
                 <p>
                   OR{" "}
                   <button
                     onClick={() => handleCartClick()}
-                    className="font-medium text-blue-600 hover:text-blue-300"
+                    className="font-medium text-blue-600 dark:text-blue-400 hover:text-blue-300 dark:hover:text-blue-200"
                   >
                     Continue Shopping
                   </button>
