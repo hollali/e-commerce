@@ -56,7 +56,7 @@ export default async function Newest() {
               </Link>
               <div className="mt-4 flex justify-between">
                 <div>
-                  <h3 className="text-sm text-primary font-semibold">
+                  <h3 className="text-sm text-blue-600 font-semibold">
                     <Link
                       href={`/product/${product.slug}`}
                       className="line-clamp-1"

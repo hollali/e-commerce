@@ -150,7 +150,7 @@ export default function Navbar() {
                 className="relative p-2.5 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
                 aria-label="Shopping cart"
               >
-                <ShoppingBagIcon className="text-gray-600 dark:text-gray-300" />
+                <ShoppingBagIcon className="text-black dark:text-gray-300" />
                 {cartCount > 0 && (
                   <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-blue-600 text-white text-xs font-semibold flex items-center justify-center shadow-sm">
                     {cartCount}
