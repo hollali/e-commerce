@@ -191,7 +191,7 @@ export default function ShoppingCartModal() {
                   <PaystackButton
                     {...paystackConfig}
                     text="Checkout"
-                    className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700"
+                    className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 dark:bg-gradient-to-br dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:hover:from-purple-500 dark:hover:via-pink-500 dark:hover:to-blue-500 shadow-sm"
                     onSuccess={handlePaystackSuccess}
                     onClose={handlePaystackClose}
                   />
