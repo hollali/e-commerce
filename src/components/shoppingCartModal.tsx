@@ -178,7 +178,7 @@ export default function ShoppingCartModal() {
             <div className="border-t border-gray-200 dark:border-gray-700 px-4 py-6 sm:px-6">
               <div className="flex justify-between text-base font-medium text-gray-900 dark:text-gray-100">
                 <p>Subtotal:</p>
-                <p className="text-blue-600 dark:text-blue-400">
+                <p className="text-blue-600 dark:text-blue-400 ">
                   {cedisSign}
                   {totalPrice}
                 </p>

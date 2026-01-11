@@ -61,7 +61,7 @@ export default function CheckoutNow({
     return (
       <button
         disabled
-        className="bg-gray-300 px-4 py-2 rounded-md cursor-not-allowed"
+        className="bg-gray-300 dark:bg-gray-700 px-4 py-2 rounded-md cursor-not-allowed text-gray-700 dark:text-gray-400"
       >
         Loading...
       </button>
@@ -73,7 +73,7 @@ export default function CheckoutNow({
       <div className="inline-block">
         <Link
           href="/sign-up"
-          className="bg-gray-300 px-4 py-2 rounded-md text-gray-700 hover:bg-gray-400 transition-colors cursor-pointer inline-block text-center no-underline"
+          className="bg-orange-500 hover:bg-orange-600 dark:bg-gradient-to-br dark:from-orange-600 dark:via-red-600 dark:to-pink-600 dark:hover:from-orange-500 dark:hover:via-red-500 dark:hover:to-pink-500 px-4 py-2 rounded-md text-white transition-colors cursor-pointer inline-block text-center no-underline"
         >
           Please login to checkout
         </Link>
@@ -89,13 +89,13 @@ export default function CheckoutNow({
         text="Checkout"
         onSuccess={handlePaystackSuccessAction}
         onClose={handlePaystackCloseAction}
-        className="bg-gray-200 px-4 py-2 rounded-md hover:bg-gray-500"
+        className="bg-gray-600 hover:bg-gray-700 dark:bg-gradient-to-br dark:from-green-600 dark:via-teal-600 dark:to-cyan-600 dark:hover:from-green-500 dark:hover:via-teal-500 dark:hover:to-cyan-500 text-white px-4 py-2 rounded-md transition-colors"
       />
 
       {/* Stripe Checkout (future use) */}
       {/*<button
         onClick={() => buyNow(product.price_id)}
-        className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+        className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 dark:bg-gradient-to-br dark:from-blue-600 dark:via-indigo-600 dark:to-purple-600 dark:hover:from-blue-500 dark:hover:via-indigo-500 dark:hover:to-purple-500"
       >
         Pay with Stripe
       </button>*/}
