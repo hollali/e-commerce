@@ -32,7 +32,7 @@ export default async function CategoryPage({
     <div className="bg-background ">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 lg:max-w-7xl lg:px-8">
         <div className="flex justify-center items-center h-full">
-          <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
+          <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:bg-gradient-to-br dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:bg-clip-text dark:text-transparent">
             {params.category}
           </h2>
         </div>
@@ -52,7 +52,7 @@ export default async function CategoryPage({
               </Link>
               <div className="mt-4 flex justify-between">
                 <div>
-                  <h6 className="text-sm text-blue-600 font-semibold">
+                  <h6 className="text-sm text-blue-600 font-semibold dark:bg-gradient-to-br dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:bg-clip-text dark:text-transparent">
                     <Link
                       href={`/product/${product.slug}`}
                       className="line-clamp-1"

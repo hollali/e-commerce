@@ -37,7 +37,7 @@ export default function AddToBag({
 
   return (
     <Button
-      className="flex items-center gap-2 bg-blue-800 hover:bg-blue-600"
+      className="flex items-center gap-2 bg-blue-800 hover:bg-blue-600 dark:bg-gradient-to-br dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:hover:from-purple-500 dark:hover:via-pink-500 dark:hover:to-blue-500 text-white"
       onClick={() => {
         addItem(product);
         handleCartClick();
