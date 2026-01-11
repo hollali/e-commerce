@@ -54,7 +54,7 @@ const Footer = () => {
 
           {/* Contact */}
           <div className="flex-1">
-            <h4 className="font-semibold text-[18px] sm:text-[20px] py-2 sm:py-2 text-gray-900 dark:text-white">
+            <h4 className="font-semibold text-[18px] sm:text-[20px] py-2 sm:py-2 text-gray-900 dark:bg-gradient-to-br dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:bg-clip-text dark:text-transparent">
               Contact Us
             </h4>
             <div className="flex items-center mb-3 sm:mb-4 text-gray-700 dark:text-gray-300">
@@ -112,7 +112,7 @@ const Footer = () => {
 
           {/* Info */}
           <div className="flex-1 sm:text-right mt-6 sm:mt-0">
-            <h4 className="font-semibold text-[18px] sm:text-[20px] py-2 sm:py-3 text-gray-900 dark:text-white">
+            <h4 className="font-semibold text-[18px] sm:text-[20px] py-2 sm:py-3 text-gray-900 dark:bg-gradient-to-br dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:bg-clip-text dark:text-transparent">
               Information
             </h4>
             <ul className="space-y-2 text-gray-600 dark:text-gray-300 text-sm sm:text-base">
@@ -153,7 +153,7 @@ const Footer = () => {
         <div className="text-center md:text-right">
           <a
             href="https://hollali.netlify.app/"
-            className="font-bold hover:text-blue-400 transition"
+            className="font-extrabold hover:text-blue-400 transition dark:bg-gradient-to-br dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:bg-clip-text dark:text-transparent"
           >
             Developed by Hollali
           </a>
