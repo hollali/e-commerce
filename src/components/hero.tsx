@@ -17,7 +17,6 @@ export default async function Hero() {
       <div className="mb-8 flex flex-wrap justify-between md:mb-16">
         {/* GSAP TEXT */}
         <HeroText />
-
         {/* Images */}
         <div className="mb-12 flex w-full md:mb-16 lg:w-2/3">
           <div className="relative left-12 top-12 z-10 -ml-12 overflow-hidden rounded-lg bg-muted shadow-lg md:left-16 md:top-16 lg:ml-0">
@@ -30,7 +29,6 @@ export default async function Hero() {
               priority
             />
           </div>
-
           <div className="overflow-hidden rounded-lg bg-muted shadow-lg">
             <Image
               src={urlFor(data.image2).url()}

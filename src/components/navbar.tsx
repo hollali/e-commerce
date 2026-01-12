@@ -75,7 +75,6 @@ export default function Navbar() {
                 <Logo />
               </div>
             </div>
-
             {/* Center: Links */}
             <div className="absolute left-1/2 -translate-x-1/2 lg:static lg:translate-x-0">
               <div className="lg:hidden">
@@ -88,7 +87,7 @@ export default function Navbar() {
                     href={link.href}
                     className={`relative px-4 py-2 text-sm font-extrabold rounded-lg transition-colors ${
                       pathname === link.href
-                        ? "text-blue-600 dark:bg-clip-text dark:text-transparent dark:text-green-400 dark:bg-gradient-to-br dark:from-green-600 dark:via-teal-600 dark:to-cyan-600"
+                        ? "text-blue-600 dark:bg-clip-text dark:text-transparent dark:text-blue-400 dark:bg-gradient-to-br dark:from-blue-600 dark:via-teal-600 dark:to-cyan-600"
                         : "text-gray-700 dark:bg-gradient-to-br dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:bg-clip-text dark:text-transparent hover:text-blue-600 hover:bg-green-500 dark:hover:bg-gradient-to-br dark:hover:from-green-600 dark:hover:via-teal-600 dark:hover:to-cyan-600 dark:hover:text-white"
                     }`}
                   >
@@ -97,7 +96,6 @@ export default function Navbar() {
                 ))}
               </nav>
             </div>
-
             {/* Right: Search + Cart + Profile + Dark Mode */}
             <div className="flex items-center gap-2">
               {/* Desktop Search */}
@@ -119,7 +117,6 @@ export default function Navbar() {
                   </button>
                 )}
               </div>
-
               {/* Mobile Search Button */}
               <button
                 onClick={() => setIsSearchOpen(true)}
@@ -128,7 +125,6 @@ export default function Navbar() {
               >
                 <SearchIcon className="text-gray-600 dark:text-gray-300" />
               </button>
-
               {/* Dark Mode Toggle */}
               <button
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
@@ -136,14 +132,12 @@ export default function Navbar() {
               >
                 {theme === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
               </button>
-
               {/* Sign Up */}
               <Link href="/sign-up" className="hidden lg:block">
                 <button className="p-2.5 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
                   <PersonOutlineIcon className="text-gray-600 dark:text-gray-300" />
                 </button>
               </Link>
-
               {/* Cart */}
               <button
                 onClick={handleCartClick}
@@ -159,7 +153,6 @@ export default function Navbar() {
               </button>
             </div>
           </div>
-
           {/* Mobile Search */}
           <div
             className={`lg:hidden overflow-hidden transition-all duration-300 ${
@@ -193,9 +186,7 @@ export default function Navbar() {
           </div>
         </div>
       </header>
-
       <div className="h-16 lg:h-0" />
-
       {/* Mobile Sidebar */}
       <div
         className={`fixed top-0 left-0 h-full w-80 bg-background dark:bg-gray-900 shadow-2xl transform transition-transform duration-300 z-50 ${
@@ -212,7 +203,6 @@ export default function Navbar() {
               <CloseIcon />
             </button>
           </div>
-
           <nav className="flex-1 overflow-y-auto p-6">
             <ul className="space-y-2">
               {links.map((link) => (
@@ -232,7 +222,6 @@ export default function Navbar() {
               ))}
             </ul>
           </nav>
-
           <div className="p-6 border-t border-gray-200 dark:border-gray-700">
             <Link href="/sign-up" onClick={() => setIsOpen(false)}>
               <Button className="w-full bg-blue-600 hover:bg-blue-700 dark:bg-gradient-to-br dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:hover:from-purple-500 dark:hover:via-pink-500 dark:hover:to-blue-500 text-white rounded-lg shadow-sm">
@@ -242,7 +231,6 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-
       {/* Backdrop */}
       {isOpen && (
         <div
