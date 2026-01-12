@@ -17,23 +17,23 @@ export default async function SearchPage({ searchParams }: any) {
 
   return (
     <div className="max-w-7xl mx-auto px-4">
-      <h1 className="text-xl font-semibold mb-6">
+      <h1 className="text-xl font-semibold mb-6 dark:bg-gradient-to-br dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:bg-clip-text dark:text-transparent">
         Search results for “{searchParams.q || "All"}”
       </h1>
 
       {/* ================= CATEGORIES ================= */}
       {categories.length > 0 && (
         <div className="mb-10">
-          <h2 className="text-lg font-semibold mb-4">Categories</h2>
+          <h2 className="text-lg font-semibold mb-4 dark:bg-gradient-to-br dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:bg-clip-text dark:text-transparent">Categories</h2>
           <div className="flex gap-4 flex-wrap">
             {categories.map((cat: any) => (
               <Link
                 key={cat._id}
                 href={`/search?cat=${encodeURIComponent(cat.name)}`}
-                className="px-4 py-2 rounded-full bg-gray-100 hover:bg-gray-200"
-              >
-                {cat.name}
-              </Link>
+                className="px-4 py-2 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gradient-to-r dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:hover:from-purple-500 dark:hover:via-pink-500 dark:hover:to-blue-500 gap-x-2"
+                >
+  {cat.name}
+</Link>
             ))}
           </div>
         </div>
@@ -42,17 +42,17 @@ export default async function SearchPage({ searchParams }: any) {
       {/* ================= PRODUCTS ================= */}
       {products.length > 0 ? (
         <div>
-          <h2 className="text-lg font-semibold mb-4">Products</h2>
+          <h2 className="text-lg font-semibold mb-4 dark:bg-gradient-to-br dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:bg-clip-text dark:text-transparent">Products</h2>
 
           {/* 🔥 SAME GRID + CARD DESIGN AS CATEGORY PAGE */}
           <div className="mt-6 grid grid-cols-2 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {products.map((product: any) => (
               <div key={product._id} className="group relative">
                 <Link href={`/product/${product.slug}`}>
-                  <div className="aspect-square w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-80">
+                  <div className="aspect-square w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-80 bg-gradient-to-br dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:bg-clip-text dark:text-transparent">
                     {product.images?.[0] && (
                       <Image
-                        src={urlFor(product.images[0])
+                        src={urlFor(product.images[0])  
                           .width(500)
                           .height(500)
                           .url()}
@@ -67,7 +67,7 @@ export default async function SearchPage({ searchParams }: any) {
 
                 <div className="mt-4 flex justify-between">
                   <div>
-                    <h6 className="text-sm text-blue-600 font-semibold">
+                    <h6 className="text-sm text-blue-600 font-semibold bg-gradient-to-br dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:bg-clip-text dark:text-transparent">
                       <Link
                         href={`/product/${product.slug}`}
                         className="line-clamp-1"
@@ -84,13 +84,13 @@ export default async function SearchPage({ searchParams }: any) {
                     )}
 
                     {/* ⭐ Rating Stars */}
-                    <div className="flex items-center space-x-1 mt-1 text-gray-300">
+                    <div className="flex items-center space-x-1 mt-1 text-gray-300 dark:text-yellow-400">
                       {Array.from({ length: 5 }).map((_, i) => (
                         <FaStar key={i} />
                       ))}
                     </div>
 
-                    <p className="text-sm font-medium text-gray-900 mt-1">
+                    <p className="text-sm font-medium text-gray-900 mt-1 dark:text-gray-100">
                       {cedisSign} {product.price}
                     </p>
                   </div>
