@@ -105,7 +105,7 @@ export default function Navbar() {
                 <input
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  placeholder="Search products..."
+                  placeholder="Search for products categories..."
                   className="bg-transparent outline-none text-sm w-56 text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
                 />
                 <SearchIcon className="text-gray-400" fontSize="small" />
@@ -171,7 +171,7 @@ export default function Navbar() {
               <input
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search products..."
+                placeholder="Search for products or categories..."
                 className="flex-1 bg-transparent outline-none text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
                 autoFocus
               />

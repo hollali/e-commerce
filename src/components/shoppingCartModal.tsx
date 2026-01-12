@@ -70,7 +70,7 @@ export default function ShoppingCartModal() {
       <Sheet open={shouldDisplayCart} onOpenChange={() => handleCartClick()}>
         <SheetContent className="sm:max-w-lg w-[100vw] dark:bg-gray-900 dark:text-gray-100">
           <SheetHeader>
-            <SheetTitle className="flex items-center justify-center h-full text-3xl text-black dark:text-gray-100 border-b pb-2 border-gray-200 dark:border-gray-700 font-bold">
+            <SheetTitle className="flex items-center justify-center h-full text-3xl text-black dark:bg-gradient-to-br dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:bg-clip-text dark:text-transparent hover:text-blue-600 hover:bg-gray-50 dark:hover:bg-gradient-to-br dark:hover:from-green-600 dark:hover:via-teal-600 dark:hover:to-cyan-600 dark:hover:text-white border-b pb-2 border-gray-200 dark:border-gray-700 font-bold">
               CART
             </SheetTitle>
           </SheetHeader>
