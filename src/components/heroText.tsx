@@ -27,9 +27,10 @@ export default function HeroText() {
         <span className="inline-block bg-gradient-to-r from-black via-gray-800 to-black bg-clip-text text-transparent animate-gradient">
           Top Fashion
         </span>{" "}
-        <span className="text-gray-700 dark:bg-gradient-to-br dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:bg-clip-text dark:text-transparent hover:text-blue-600 hover:bg-blue-800 dark:hover:bg-gradient-to-br dark:hover:from-green-600 dark:hover:via-teal-600 dark:hover:to-cyan-600 dark:hover:text-green-500 animate-gradient">
+        <span className="bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:hover:from-orange-600 dark:hover:via-teal-600 dark:hover:to-cyan-600">
           at an
-          </span>{" "}
+        </span>
+          {" "}
         <span className="inline-block bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient">
           Affordable Price!
         </span>

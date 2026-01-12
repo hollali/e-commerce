@@ -34,7 +34,7 @@ export default async function Newest() {
             className="font-semibold text-blue-600 flex items-center gap-x-1"
             href="/all"
           >
-            <button className="relative px-1 py-1 rounded-full font-medium text-gray-900 dark:text-white bg-white dark:bg-gray-900 overflow-hidden group">
+            <button className="relative px-2 py-2 rounded-full font-medium text-gray-900 dark:text-white bg-white dark:bg-gray-700 overflow-hidden group text-transparent">
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"></div>
               <div className="absolute inset-[2px] rounded-full bg-white dark:bg-gray-900 z-10"></div>
               <span className="relative z-20 flex items-center gap-2 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent group-hover:from-purple-500 group-hover:via-pink-500 group-hover:to-blue-500 transition-all duration-300">
