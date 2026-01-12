@@ -82,17 +82,16 @@ export default function Navbar() {
               </div>
               <nav className="hidden lg:flex items-center gap-2">
                 {links.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className={`relative px-4 py-2 text-sm font-extrabold rounded-lg transition-colors ${
-                      pathname === link.href
-                        ? "text-blue-600 dark:bg-clip-text dark:text-transparent dark:text-blue-400 dark:bg-gradient-to-br dark:from-blue-600 dark:via-teal-600 dark:to-purple-600"
-                        : "text-gray-700 dark:bg-gradient-to-br dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:bg-clip-text dark:text-transparent hover:text-blue-600 hover:bg-green-500 dark:hover:bg-gradient-to-br dark:hover:from-green-600 dark:hover:via-teal-600 dark:hover:to-cyan-600 dark:bg-gradient-to-br-dark:hover:from:-green-700 dark:hover:via-blue-500-to-cyan-500"
-                    }`}
-                  >
-                    {link.name}
-                  </Link>
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`relative px-4 py-2 text-sm font-extrabold rounded-lg transition-colors ${
+                  pathname === link.href
+                  ? "text-blue-600 dark:bg-gradient-to-br dark:from-blue-600 dark:via-teal-600 dark:to-purple-600 dark:bg-clip-text dark:text-transparent"
+                  : "text-gray-700 hover:text-blue-600 dark:bg-gradient-to-br dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:bg-clip-text dark:text-transparent dark:hover:from-green-600 dark:hover:via-teal-600 dark:hover:to-cyan-600"
+                  }`}>
+                  {link.name}
+                </Link>
                 ))}
               </nav>
             </div>
