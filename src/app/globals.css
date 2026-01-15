@@ -59,3 +59,29 @@
       @apply bg-background text-foreground;
     }
   }
+
+/* ===============================
+   HARD Paystack isolation
+   =============================== */
+
+/* Force light color scheme for iframes */
+iframe {
+  color-scheme: light !important;
+  forced-color-adjust: none !important;
+  filter: none !important;
+  background: transparent !important;
+}
+
+/* Extra hard reset in dark mode */
+.dark iframe {
+  color-scheme: light !important;
+  forced-color-adjust: none !important;
+  filter: none !important;
+  background: transparent !important;
+}
+
+/* Prevent parent stacking effects */
+.dark {
+  isolation: isolate;
+}
+

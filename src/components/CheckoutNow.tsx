@@ -89,7 +89,7 @@ export default function CheckoutNow({
         text="Checkout"
         onSuccess={handlePaystackSuccessAction}
         onClose={handlePaystackCloseAction}
-        className="bg-gray-600 hover:bg-gray-700 dark:bg-gradient-to-br dark:from-green-600 dark:via-teal-600 dark:to-cyan-600 dark:hover:from-green-500 dark:hover:via-teal-500 dark:hover:to-cyan-500 text-white px-4 py-2 rounded-md transition-colors"
+        className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition-colors"
       />
 
       {/* Stripe Checkout (future use) */}
