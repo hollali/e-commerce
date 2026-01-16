@@ -24,21 +24,21 @@ export default function HeroText() {
           letterSpacing: "-0.02em",
         }}
       >
-        <span className="inline-block bg-gradient-to-r from-black via-gray-800 to-black bg-clip-text text-transparent animate-gradient">
+        <span className="inline-block bg-gradient-to-r from-black via-gray-800 to-black dark:from-purple-400 dark:via-pink-400 dark:to-blue-400 bg-clip-text text-transparent animate-gradient">
           Top Fashion
         </span>{" "}
         <span className="bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:hover:from-orange-600 dark:hover:via-teal-600 dark:hover:to-cyan-600">
           at an
         </span>
           {" "}
-        <span className="inline-block bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient">
+        <span className="inline-block bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 dark:from-pink-400 dark:via-purple-400 dark:to-indigo-400 bg-clip-text text-transparent animate-gradient">
           Affordable Price!
         </span>
       </h1>
 
       <p
         ref={textRef}
-        className={`max-w-md leading-relaxed text-gray-500 xl:text-lg transition-all duration-1000 ease-out delay-300 ${
+        className={`max-w-md leading-relaxed text-gray-500 dark:text-gray-400 xl:text-lg transition-all duration-1000 ease-out delay-300 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
@@ -51,9 +51,9 @@ export default function HeroText() {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
-        <button className="group relative px-6 py-3 bg-black text-white  dark:bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full font-medium overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl">
+        <button className="group relative px-6 py-3 bg-gradient-to-r from-gray-900 via-black to-gray-900 dark:from-indigo-600 dark:to-purple-600 text-white rounded-full font-medium overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl">
           <span className="relative z-10">Shop Now</span>
-          <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-purple-500 dark:to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </button>
       </div>
 
