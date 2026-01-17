@@ -193,7 +193,7 @@ export default function Navbar() {
         }`}
       >
         <div className="flex flex-col h-full">
-          <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
+          <div className="flex items-center justify-between p-3 border-b border-gray-200 dark:border-gray-700">
             <Logo />
             <button
               onClick={() => setIsOpen(false)}
