@@ -124,10 +124,10 @@ export default function Navbar() {
               >
                 <SearchIcon className="text-gray-600 dark:text-gray-300" />
               </button>
-              {/* Dark Mode Toggle */}
+              {/* Dark Mode Toggle - Desktop Only */}
               <button
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+                className="hidden lg:block p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
               >
                 {theme === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
               </button>
@@ -222,6 +222,17 @@ export default function Navbar() {
             </ul>
           </nav>
           <div className="p-6 border-t border-gray-200 dark:border-gray-700">
+            {/* Dark Mode Toggle in Sidebar */}
+            <button
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="w-full mb-4 p-3 flex items-center justify-center gap-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors"
+            >
+              {theme === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
+              <span className="font-medium text-gray-700 dark:text-gray-200">
+                {theme === "dark" ? "Light Mode" : "Dark Mode"}
+              </span>
+            </button>
+            
             <Link href="/sign-up" onClick={() => setIsOpen(false)}>
               <Button className="w-full bg-blue-600 hover:bg-blue-700 dark:bg-gradient-to-br dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:hover:from-purple-500 dark:hover:via-pink-500 dark:hover:to-blue-500 text-white rounded-lg shadow-sm">
                 Sign Up

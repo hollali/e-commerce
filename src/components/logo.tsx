@@ -5,7 +5,11 @@ import Link from "next/link";
 
 export default function Logo({ onClick }: { onClick?: () => void }) {
   return (
-    <Link href="/" onClick={onClick} className="flex items-center">
+    <Link 
+      href="/" 
+      onClick={onClick} 
+      className="flex items-center transition-opacity hover:opacity-80 duration-200"
+    >
       <Image
         src="/logo.png" //! Place your logo file in /public/logo.png
         alt="Anet Beads Logo"
