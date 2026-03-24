@@ -24,14 +24,14 @@ export default function HeroText() {
           letterSpacing: "-0.02em",
         }}
       >
-        <span className="inline-block bg-gradient-to-r from-black via-gray-800 to-black dark:from-purple-400 dark:via-pink-400 dark:to-blue-400 bg-clip-text text-transparent animate-gradient">
+        <span className="inline-block text-black dark:text-gray-100">
           Top Fashion
         </span>{" "}
-        <span className="bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:hover:from-orange-600 dark:hover:via-teal-600 dark:hover:to-cyan-600">
+        <span className="text-blue-600 dark:text-blue-400">
           at an
         </span>
           {" "}
-        <span className="inline-block bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 dark:from-pink-400 dark:via-purple-400 dark:to-indigo-400 bg-clip-text text-transparent animate-gradient">
+        <span className="inline-block text-indigo-600 dark:text-indigo-400">
           Affordable Price!
         </span>
       </h1>
@@ -51,28 +51,12 @@ export default function HeroText() {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
-        <button className="group relative px-6 py-3 bg-gradient-to-r from-gray-900 via-black to-gray-900 dark:from-indigo-600 dark:to-purple-600 text-white rounded-full font-medium overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl">
+        <button className="group relative px-6 py-3 bg-gray-900 dark:bg-indigo-600 text-white rounded-full font-medium overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl">
           <span className="relative z-10">Shop Now</span>
-          <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-purple-500 dark:to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="absolute inset-0 bg-indigo-700 dark:bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </button>
       </div>
 
-      <style jsx>{`
-        @keyframes gradient {
-          0%,
-          100% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-        }
-
-        .animate-gradient {
-          background-size: 200% auto;
-          animation: gradient 3s ease infinite;
-        }
-      `}</style>
     </div>
   );
 }
