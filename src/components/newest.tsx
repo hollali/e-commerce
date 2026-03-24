@@ -27,7 +27,7 @@ export default async function Newest() {
     <div className="bg-background transition-colors">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <div className="flex justify-between items-center">
-          <h2 className="text-2xl font-bold tracking-tight text-foreground dark:bg-gradient-to-br dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:bg-clip-text dark:text-transparent">
+          <h2 className="text-2xl font-bold tracking-tight text-foreground dark:text-blue-400">
             Our New Arrivals
           </h2>
           <Link
@@ -35,9 +35,9 @@ export default async function Newest() {
             href="/all"
           >
             <button className="relative px-2 py-2 rounded-full font-medium text-gray-900 dark:text-white bg-white dark:bg-gray-700 overflow-hidden group text-transparent">
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"></div>
+              <div className="absolute inset-0 rounded-full bg-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"></div>
               <div className="absolute inset-[2px] rounded-full bg-white dark:bg-gray-900 z-10"></div>
-              <span className="relative z-20 flex items-center gap-2 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent group-hover:from-purple-500 group-hover:via-pink-500 group-hover:to-blue-500 transition-all duration-300">
+              <span className="relative z-20 flex items-center gap-2 text-blue-600 dark:text-blue-400 transition-all duration-300">
                 View All
                 <ArrowRight className="w-5 h-5 text-purple-600 transition-transform duration-300 group-hover:translate-x-1" />
                 {/*<svg
@@ -73,7 +73,7 @@ export default async function Newest() {
               </Link>
               <div className="mt-4 flex justify-between">
                 <div>
-                  <h3 className="text-sm text-blue-600 font-semibold dark:bg-gradient-to-br dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:bg-clip-text dark:text-transparent">
+                  <h3 className="text-sm text-blue-600 font-semibold dark:text-blue-400">
                     <Link
                       href={`/product/${product.slug}`}
                       className="line-clamp-1"

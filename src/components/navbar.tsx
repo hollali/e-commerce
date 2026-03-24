@@ -65,7 +65,7 @@ export default function Navbar() {
             {/* Left: Menu + Logo */}
             <div className="flex items-center gap-4 lg:gap-6">
               <button
-                className="lg:hidden p-2 hover:bg-gray-200 dark:hover:bg-gradient-to-br dark:hover:from-purple-600 dark:hover:via-pink-600 dark:hover:to-blue-600 rounded-lg transition-colors"
+                className="lg:hidden p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors"
                 onClick={() => setIsOpen(!isOpen)}
                 aria-label="Toggle menu"
               >
@@ -87,8 +87,8 @@ export default function Navbar() {
                   href={link.href}
                   className={`relative px-4 py-2 text-sm font-extrabold rounded-lg transition-colors ${
                   pathname === link.href
-                  ? "text-blue-600 dark:bg-gradient-to-br dark:from-blue-600 dark:via-teal-600 dark:to-purple-600 dark:bg-clip-text dark:text-transparent"
-                  : "text-gray-700 hover:text-blue-600 dark:bg-gradient-to-br dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:bg-clip-text dark:text-transparent dark:hover:from-green-600 dark:hover:via-teal-600 dark:hover:to-cyan-600"
+                  ? "text-blue-600 dark:text-blue-400"
+                  : "text-gray-700 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-400"
                   }`}>
                   {link.name}
                 </Link>
@@ -145,7 +145,7 @@ export default function Navbar() {
               >
                 <ShoppingBagIcon className="text-black dark:text-gray-300" />
                 {cartCount > 0 && (
-                  <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-blue-600 text-white text-xs font-semibold flex items-center justify-center shadow-sm dark:bg-gradient-to-br dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:hover:from-purple-500 dark:hover:via-pink-500 dark:hover:to-blue-500">
+                  <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-blue-600 text-white text-xs font-semibold flex items-center justify-center shadow-sm dark:bg-blue-500 dark:hover:bg-blue-400">
                     {cartCount}
                   </span>
                 )}
@@ -212,7 +212,7 @@ export default function Navbar() {
                     className={`block px-4 py-3 rounded-lg font-medium transition-colors ${
                       pathname === link.href
                         ? "bg-blue-50 text-blue-600 dark:bg-gray-800 dark:text-blue-400"
-                        : "text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-blue-600 dark:bg-gradient-to-br dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:bg-clip-text dark:text-transparent"
+                        : "text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-blue-600"
                     }`}
                   >
                     {link.name}
@@ -234,7 +234,7 @@ export default function Navbar() {
             </button>
             
             <Link href="/sign-up" onClick={() => setIsOpen(false)}>
-              <Button className="w-full bg-blue-600 hover:bg-blue-700 dark:bg-gradient-to-br dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 dark:hover:from-purple-500 dark:hover:via-pink-500 dark:hover:to-blue-500 text-white rounded-lg shadow-sm">
+              <Button className="w-full bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400 text-white rounded-lg shadow-sm">
                 Sign Up
               </Button>
             </Link>
